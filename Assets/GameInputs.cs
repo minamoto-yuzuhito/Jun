@@ -98,6 +98,15 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BiteSpace"",
+                    ""type"": ""Button"",
+                    ""id"": ""c27d224e-14e6-4751-900f-b856f8ed831c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -188,6 +197,17 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
                     ""action"": ""BitePlus"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""237a7f18-76fe-42ee-b610-ba20f76893d8"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BiteSpace"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -204,6 +224,7 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
         m_Player_BiteK = m_Player.FindAction("BiteK", throwIfNotFound: true);
         m_Player_BiteL = m_Player.FindAction("BiteL", throwIfNotFound: true);
         m_Player_BitePlus = m_Player.FindAction("BitePlus", throwIfNotFound: true);
+        m_Player_BiteSpace = m_Player.FindAction("BiteSpace", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -273,6 +294,7 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_BiteK;
     private readonly InputAction m_Player_BiteL;
     private readonly InputAction m_Player_BitePlus;
+    private readonly InputAction m_Player_BiteSpace;
     public struct PlayerActions
     {
         private @GameInputs m_Wrapper;
@@ -285,6 +307,7 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
         public InputAction @BiteK => m_Wrapper.m_Player_BiteK;
         public InputAction @BiteL => m_Wrapper.m_Player_BiteL;
         public InputAction @BitePlus => m_Wrapper.m_Player_BitePlus;
+        public InputAction @BiteSpace => m_Wrapper.m_Player_BiteSpace;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -318,6 +341,9 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
             @BitePlus.started += instance.OnBitePlus;
             @BitePlus.performed += instance.OnBitePlus;
             @BitePlus.canceled += instance.OnBitePlus;
+            @BiteSpace.started += instance.OnBiteSpace;
+            @BiteSpace.performed += instance.OnBiteSpace;
+            @BiteSpace.canceled += instance.OnBiteSpace;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -346,6 +372,9 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
             @BitePlus.started -= instance.OnBitePlus;
             @BitePlus.performed -= instance.OnBitePlus;
             @BitePlus.canceled -= instance.OnBitePlus;
+            @BiteSpace.started -= instance.OnBiteSpace;
+            @BiteSpace.performed -= instance.OnBiteSpace;
+            @BiteSpace.canceled -= instance.OnBiteSpace;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -373,5 +402,6 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
         void OnBiteK(InputAction.CallbackContext context);
         void OnBiteL(InputAction.CallbackContext context);
         void OnBitePlus(InputAction.CallbackContext context);
+        void OnBiteSpace(InputAction.CallbackContext context);
     }
 }

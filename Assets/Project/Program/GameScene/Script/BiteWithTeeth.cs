@@ -56,21 +56,4 @@ public class BiteWithTeeth : MonoBehaviour
         lowerTooth.transform.DOMoveY(upperToothInitialPosY, mouthCloseSpeed).
         SetEase(Ease.InOutQuart);   // イージング設定
     }
-
-    /// <summary>
-    /// 歯を初期座標に戻す
-    /// </summary>
-    public void SetInit()
-    {
-        upperTooth.transform.DOKill();
-        lowerTooth.transform.DOKill();
-
-        // 上の歯を初期座標に戻す
-        upperTooth.transform.DOMoveY(upperToothInitialPosY, mouthOpenSpeed).
-        SetEase(Ease.InOutQuart);   // イージング設定
-
-        // 下の歯を初期座標に戻す
-        lowerTooth.transform.DOMoveY(lowerToothInitialPosY, mouthOpenSpeed).
-        SetEase(Ease.InOutQuart);   // イージング設定
-    }
 }

@@ -27,6 +27,17 @@ public class ToothController : MonoBehaviour
     }
 
     /// <summary>
+    /// 全ての歯で噛む
+    /// </summary>
+    private void OnBiteSpace()
+    {
+        for (int i = 0; i <= (int)ToothType.ToothPlus; i++)
+        {
+            tooths[i].GetComponent<BiteWithTeeth>().IsBite();
+        }
+    }
+
+    /// <summary>
     /// 一番左の歯で嚙む
     /// </summary>
     private void OnBiteA() { tooths[(int)ToothType.ToothA].GetComponent<BiteWithTeeth>().IsBite(); }
