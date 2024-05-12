@@ -58,6 +58,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3114984880231708184}
     m_Modifications:
+    - target: {fileID: 634661887497731557, guid: 225c62ccd16c9f04f9851ff3260db363, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 24b1f85e7bb0fa24d9d8614399265603, type: 2}
     - target: {fileID: 1427141834649918512, guid: 225c62ccd16c9f04f9851ff3260db363, type: 3}
       propertyPath: m_Name
       value: LowerTeeth
@@ -129,6 +133,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3114984880231708184}
     m_Modifications:
+    - target: {fileID: 634661887497731557, guid: 225c62ccd16c9f04f9851ff3260db363, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 24b1f85e7bb0fa24d9d8614399265603, type: 2}
     - target: {fileID: 1427141834649918512, guid: 225c62ccd16c9f04f9851ff3260db363, type: 3}
       propertyPath: m_Name
       value: UpperTeeth

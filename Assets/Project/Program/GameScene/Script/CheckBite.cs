@@ -19,7 +19,7 @@ public class CheckBite : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("“–‚½‚Á‚½!");
+        //Debug.Log("“–‚½‚Á‚½!");
 
         // ‘¼‚ÌŽ•‚É“–‚½‚Á‚½Žž
         if (other.CompareTag("Tooth"))
