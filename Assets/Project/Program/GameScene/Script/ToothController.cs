@@ -31,6 +31,10 @@ public class ToothController : MonoBehaviour
     public GameManager gameManager;
 
     [SerializeField]
+    [Tooltip("ThrowingObjectSettings")]
+    public ThrowingObjectSettings throwingObjectSettings;
+
+    [SerializeField]
     [Tooltip("PlayerInput")]
     public PlayerInput playerInput;
 
@@ -51,9 +55,6 @@ public class ToothController : MonoBehaviour
         {
             tooths.Add(transform.GetChild(i).gameObject);
         }
-
-        // キー入力を受け付けない
-        playerInput.enabled = false;
     }
 
     /// <summary>
@@ -61,9 +62,12 @@ public class ToothController : MonoBehaviour
     /// </summary>
     public void PresentProblem()
     {
-        // 放射物が発射されていないとき
+        // どの歯に投げるかを選択する
         if(!isPresentProblem)
         {
+            // キー入力を受け付ける
+            playerInput.enabled = true;
+
             // キー入力が行われた場合、
             // ThrowingObjectSettingsクラスでIsToothShining関数が呼び出されるため、
             // InvokeでIsToothShining関数を呼び出す必要がなくなるためInvokeを停止する
@@ -71,9 +75,6 @@ public class ToothController : MonoBehaviour
 
             // 歯を光らせる
             ToothShining();
-
-            // 指定時間、キー入力を受け付ける
-            playerInput.enabled = true;
 
             // 指定時間経過するか、キー入力が行われるまで歯を光らせない
             isPresentProblem = true;
@@ -93,12 +94,31 @@ public class ToothController : MonoBehaviour
     {
         isPresentProblem = false;
 
-        // 
+        // 放射物の数をカウント
         gameManager.SetQueueSetCnt(1);
     }
 
     /// <summary>
-    /// 全ての歯を光らせない
+    /// 歯を光らせる
+    /// </summary>
+    private void ToothShining()
+    {
+        // 一旦全ての歯の発光を止める
+        AllToothNotShining();
+
+        // 8本の歯の内から1本、光らせる歯を決める
+        int rnd = Random.Range(0, (int)ToothPosition.ToothPlus + 1);
+
+        // 上下の歯のマテリアルを操作して発光させる
+        for (int j = 0; j < 2; j++)
+        {
+            tooths[rnd].transform.GetChild(j).
+                    gameObject.GetComponent<MeshRenderer>().material = materialArray[(int)ToothMaterial.Shining];
+        }
+    }
+
+    /// <summary>
+    /// 全ての歯の発光を止める
     /// </summary>
     public void AllToothNotShining()
     {
@@ -115,30 +135,28 @@ public class ToothController : MonoBehaviour
     }
 
     /// <summary>
-    /// 歯を光らせる
-    /// </summary>
-    private void ToothShining()
-    {
-        // 全ての歯を光らせない
-        AllToothNotShining();
-
-        // 8本の歯の内から1本、光らせる歯を決める
-        int rnd = Random.Range(0, (int)ToothPosition.ToothPlus + 1);
-
-        // 上下の歯のマテリアルを操作する
-        for (int j = 0; j < 2; j++)
-        {
-            tooths[rnd].transform.GetChild(j).
-                    gameObject.GetComponent<MeshRenderer>().material = materialArray[(int)ToothMaterial.Shining];
-        }
-    }
-
-    /// <summary>
     /// 放射物が歯の射程範囲に入った時
     /// </summary>
     /// <param name="other"></param>
     void OnTriggerEnter(Collider other)
     {
-        
+        // 放射物に当たった時
+        if (other.CompareTag("ThrowingObject"))
+        {
+            // 回転、位置ともに固定
+            other.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+
+            // 物が投げられた回数
+            int throwCnt = gameManager.GetThrowCnt();
+
+            // 物が投げられる歯の種類
+            ToothPosition toothPosition = throwingObjectSettings.GetThrowingObjects()[throwCnt - 1];
+
+            // 物が投げられる歯を取得
+            GameObject tooth = transform.GetChild((int)toothPosition).gameObject;
+
+            // 取得した歯で噛む動作を実行
+            tooth.GetComponent<BiteWithTeeth>().IsBite();
+        }
     }
 }

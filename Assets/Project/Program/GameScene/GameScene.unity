@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1269398093}
+  throwingObjectSettings: {fileID: 1269398092}
   playerInput: {fileID: 1269398094}
   materialArray:
   - {fileID: 2100000, guid: 24b1f85e7bb0fa24d9d8614399265603, type: 2}
@@ -872,7 +873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dc4877a425f43b4389e65f9b638a0f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThrowingObject: {fileID: 5356613591896624093, guid: f1702e157922d5b4fac9075ae6a0d30d, type: 3}
+  ThrowingObject: {fileID: 4349862135764450974, guid: 43c1394b267b2614f89754f976d4e369, type: 3}
   TargetObject:
   - {fileID: 1331419769}
   - {fileID: 286934814}
@@ -1289,7 +1290,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1269398090}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 

@@ -13,7 +13,9 @@ public class GameManager : MonoBehaviour
     [Tooltip("Throwingクラス")]
     public Throwing throwing;
 
-    // キューに登録した回数
+    private ThrowingObjectSettings throwingObjectSettings;
+
+    // 放射物の数をカウント
     private int QueueSetCnt;
     public void SetQueueSetCnt(int Value) { QueueSetCnt += Value; }    // セッター
 
@@ -22,10 +24,14 @@ public class GameManager : MonoBehaviour
 
     // 投げた回数
     private int ThrowCnt;
+    public int GetThrowCnt() { return ThrowCnt; }   // ゲッター
 
     // Start is called before the first frame update
     void Start()
     {
+        throwingObjectSettings = GetComponent<ThrowingObjectSettings>();
+
+        // 投げる最大数を設定
         TotalQueue = 3;
     }
 
@@ -34,10 +40,13 @@ public class GameManager : MonoBehaviour
     {
         // どこの歯に向かって物を投げるかを決めている
         // 最大数投げていないとき
-        if(QueueSetCnt != TotalQueue)
+        if (QueueSetCnt != TotalQueue)
         {
             // プレイヤーが押すべきキーを提示する
             toothController.PresentProblem();
+
+            // キー入力を受け付けて、どの歯に投げるかを決める
+            throwingObjectSettings.SetThrowingObject();
 
             // 投げる物を全て決め終わった時
             if (QueueSetCnt >= TotalQueue)
@@ -47,10 +56,10 @@ public class GameManager : MonoBehaviour
 
                 // 選んだ場所に物が投げられる（自動操作）
                 StartCoroutine(ThrowBasedOnQueue());
-
-                QueueSetCnt = 0;
             }
         }
+
+        Debug.Log(QueueSetCnt);
     }
 
     /// <summary>
@@ -64,9 +73,19 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(2);
 
             // 全て投げ終わった時
-            if (ThrowCnt >= TotalQueue) break;
+            if (ThrowCnt >= TotalQueue)
+            {
+                QueueSetCnt = 0;
+                ThrowCnt = 0;
 
-            ToothPosition target = GetComponent<ThrowingObjectSettings>().GetThrowingObjects()[ThrowCnt];
+                // キューを削除
+                List<ToothPosition> throwingObjects = throwingObjectSettings.GetThrowingObjects();
+                throwingObjects.Clear();
+
+                break;
+            }
+
+            ToothPosition target = throwingObjectSettings.GetThrowingObjects()[ThrowCnt];
 
             // キューに登録した場所に物を投げる
             throwing.IsThrowingObject(target);

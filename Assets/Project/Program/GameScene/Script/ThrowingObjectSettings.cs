@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static ToothController;
 
@@ -13,48 +14,82 @@ public class ThrowingObjectSettings : MonoBehaviour
     private List<ToothPosition> throwingObjects = new List<ToothPosition>();
     public List<ToothPosition> GetThrowingObjects() { return throwingObjects; }
 
-    /// <summary>
-    /// 全ての歯で噛む
-    /// </summary>
-    private void OnBiteSpace(){ throwingObjects.Add(ToothPosition.AllTooth); toothController.IsToothShining(); }
+    public void SetThrowingObject()
+    {
+        int input = CheckInput();
+
+        // 対応するキーが押されなかった時
+        if (input < 0) return;
+
+        // キューに登録
+        throwingObjects.Add((ToothPosition)input);
+
+        // 歯を光らせる
+        toothController.IsToothShining();
+    }
 
     /// <summary>
-    /// 一番左の歯で嚙む
+    /// キー入力を判定
     /// </summary>
-    private void OnBiteA() { throwingObjects.Add(ToothPosition.ToothA); toothController.IsToothShining(); }
+    private int CheckInput()
+    {
+        int toothPosition = -1;
 
-    /// <summary>
-    /// 左から２番目の歯で嚙む
-    /// </summary>
-    private void OnBiteS() { throwingObjects.Add(ToothPosition.ToothS); toothController.IsToothShining(); }
+        if (Input.GetKeyDown(KeyCode.Space)) toothPosition = (int)ToothPosition.AllTooth;
+        if (Input.GetKeyDown(KeyCode.A)) toothPosition = (int)ToothPosition.ToothA;
+        if (Input.GetKeyDown(KeyCode.D)) toothPosition = (int)ToothPosition.ToothS;
+        if (Input.GetKeyDown(KeyCode.S)) toothPosition = (int)ToothPosition.ToothD;
+        if (Input.GetKeyDown(KeyCode.F)) toothPosition = (int)ToothPosition.ToothF;
+        if (Input.GetKeyDown(KeyCode.J)) toothPosition = (int)ToothPosition.ToothJ;
+        if (Input.GetKeyDown(KeyCode.K)) toothPosition = (int)ToothPosition.ToothK;
+        if (Input.GetKeyDown(KeyCode.L)) toothPosition = (int)ToothPosition.ToothL;
+        if (Input.GetKeyDown(KeyCode.Semicolon)) toothPosition = (int)ToothPosition.ToothPlus;
 
-    /// <summary>
-    /// 左から３番目の歯で嚙む
-    /// </summary>
-    private void OnBiteD() { throwingObjects.Add(ToothPosition.ToothD); toothController.IsToothShining(); }
+        return toothPosition;
+    }
 
-    /// <summary>
-    /// 左から４番目の歯で嚙む
-    /// </summary>
-    private void OnBiteF() { throwingObjects.Add(ToothPosition.ToothF); toothController.IsToothShining(); }
+    ///// <summary>
+    ///// 全ての歯で噛む
+    ///// </summary>
+    //private void OnBiteSpace(){ throwingObjects.Add(ToothPosition.AllTooth); toothController.IsToothShining(); }
 
-    /// <summary>
-    /// 右から４番目の歯で嚙む
-    /// </summary>
-    private void OnBiteJ() { throwingObjects.Add(ToothPosition.ToothJ); toothController.IsToothShining(); }
+    ///// <summary>
+    ///// 一番左の歯で嚙む
+    ///// </summary>
+    //private void OnBiteA() { throwingObjects.Add(ToothPosition.ToothA); toothController.IsToothShining(); }
 
-    /// <summary>
-    /// 右から３番目の歯で嚙む
-    /// </summary>
-    private void OnBiteK() { throwingObjects.Add(ToothPosition.ToothK); toothController.IsToothShining(); }
+    ///// <summary>
+    ///// 左から２番目の歯で嚙む
+    ///// </summary>
+    //private void OnBiteS() { throwingObjects.Add(ToothPosition.ToothS); toothController.IsToothShining(); }
 
-    /// <summary>
-    /// 右から２番目の歯で嚙む
-    /// </summary>
-    private void OnBiteL() { throwingObjects.Add(ToothPosition.ToothL); toothController.IsToothShining(); }
+    ///// <summary>
+    ///// 左から３番目の歯で嚙む
+    ///// </summary>
+    //private void OnBiteD() { throwingObjects.Add(ToothPosition.ToothD); toothController.IsToothShining(); }
 
-    /// <summary>
-    /// 一番右の歯で嚙む
-    /// </summary>
-    private void OnBitePlus() { throwingObjects.Add(ToothPosition.ToothPlus); toothController.IsToothShining(); }
+    ///// <summary>
+    ///// 左から４番目の歯で嚙む
+    ///// </summary>
+    //private void OnBiteF() { throwingObjects.Add(ToothPosition.ToothF); toothController.IsToothShining(); }
+
+    ///// <summary>
+    ///// 右から４番目の歯で嚙む
+    ///// </summary>
+    //private void OnBiteJ() { throwingObjects.Add(ToothPosition.ToothJ); toothController.IsToothShining(); }
+
+    ///// <summary>
+    ///// 右から３番目の歯で嚙む
+    ///// </summary>
+    //private void OnBiteK() { throwingObjects.Add(ToothPosition.ToothK); toothController.IsToothShining(); }
+
+    ///// <summary>
+    ///// 右から２番目の歯で嚙む
+    ///// </summary>
+    //private void OnBiteL() { throwingObjects.Add(ToothPosition.ToothL); toothController.IsToothShining(); }
+
+    ///// <summary>
+    ///// 一番右の歯で嚙む
+    ///// </summary>
+    //private void OnBitePlus() { throwingObjects.Add(ToothPosition.ToothPlus); toothController.IsToothShining(); }
 }

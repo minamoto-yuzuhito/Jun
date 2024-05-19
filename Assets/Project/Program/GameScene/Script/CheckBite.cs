@@ -30,5 +30,12 @@ public class CheckBite : MonoBehaviour
             transform.DOMoveY(toothInitialPosY, 1).
             SetEase(Ease.InOutQuart);   // イージング設定
         }
+
+        // 放射物に当たった時
+        if (other.CompareTag("ThrowingObject"))
+        {
+            // 放射物を削除
+            Destroy(other.gameObject);
+        }
     }
 }
