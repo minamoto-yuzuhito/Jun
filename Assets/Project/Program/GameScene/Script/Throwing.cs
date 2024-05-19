@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static ToothController;
 
 /// <summary>
 /// 一定時間毎にオブジェクトを射出する
@@ -17,7 +18,7 @@ public class Throwing : MonoBehaviour
     /// 標的のオブジェクト
     /// </summary>
     [SerializeField, Tooltip("標的のオブジェクトをここに割り当てる")]
-    private GameObject TargetObject;
+    private GameObject[] TargetObject = new GameObject[(int)ToothPosition.ToothPlus + 1];
 
     [SerializeField, Tooltip("生成のインターバル")]
     private int interval = 3;
@@ -30,56 +31,29 @@ public class Throwing : MonoBehaviour
 
     private void Start()
     {
-            Collider collider = GetComponent<Collider>();
-            if (collider != null)
-            {
-                // 干渉しないようにisTriggerをつける
-                collider.isTrigger = true;
-            }
 
-            // 魚射出処理
-            //StartCoroutine("throwStart");
-    }
-
-    IEnumerator throwStart()
-    {
-        // 魚を射出する
-        ThrowingFish();
-
-        // 指定秒停止
-        yield return new WaitForSeconds(interval);
-
-        // 魚射出処理を再起呼び出し
-        StartCoroutine("throwStart");
     }
 
     /// <summary>
-    /// 魚を射出する
+    /// 物を射出する
     /// </summary>
-    private void ThrowingFish()
+    public void IsThrowingObject(ToothPosition ToothPosition)
     {
-        if (ThrowingObject != null && TargetObject != null)
-        {
-            // 魚オブジェクトの生成
-            GameObject throwingObject = Instantiate(ThrowingObject, this.transform.position, Quaternion.identity);
+        // 魚オブジェクトの生成
+        GameObject throwingObject = Instantiate(ThrowingObject, this.transform.position, Quaternion.identity);
 
-            // 標的の座標
-            Vector3 targetPosition = TargetObject.transform.position;
+        // 標的の座標
+        Vector3 targetPosition = TargetObject[(int)ToothPosition].transform.position;
 
-            // 射出角度
-            float angle = ThrowingAngle;
+        // 射出角度
+        float angle = ThrowingAngle;
 
-            // 射出速度を算出
-            Vector3 velocity = CalculateVelocity(this.transform.position, targetPosition, angle);
+        // 射出速度を算出
+        Vector3 velocity = CalculateVelocity(this.transform.position, targetPosition, angle);
 
-            // 射出
-            Rigidbody rid = throwingObject.GetComponent<Rigidbody>();
-            rid.AddForce(velocity * rid.mass, ForceMode.Impulse);
-        }
-        else
-        {
-            throw new System.Exception("射出するオブジェクトまたは標的のオブジェクトが未設定です。");
-        }
+        // 射出
+        Rigidbody rid = throwingObject.GetComponent<Rigidbody>();
+        rid.AddForce(velocity * rid.mass, ForceMode.Impulse);
     }
 
     /// <summary>

@@ -11,21 +11,7 @@ public class ThrowingObjectSettings : MonoBehaviour
 
     // 投げる物を順番に格納する
     private List<ToothPosition> throwingObjects = new List<ToothPosition>();
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        for(int i = 0; i < throwingObjects.Count; i++)
-        {
-            Debug.Log((int)throwingObjects[i]);
-        }
-    }
+    public List<ToothPosition> GetThrowingObjects() { return throwingObjects; }
 
     /// <summary>
     /// 全ての歯で噛む

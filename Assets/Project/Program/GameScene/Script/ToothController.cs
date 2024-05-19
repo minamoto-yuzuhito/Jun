@@ -27,6 +27,10 @@ public class ToothController : MonoBehaviour
     }
 
     [SerializeField]
+    [Tooltip("GameManager")]
+    public GameManager gameManager;
+
+    [SerializeField]
     [Tooltip("PlayerInput")]
     public PlayerInput playerInput;
 
@@ -63,10 +67,10 @@ public class ToothController : MonoBehaviour
             // キー入力が行われた場合、
             // ThrowingObjectSettingsクラスでIsToothShining関数が呼び出されるため、
             // InvokeでIsToothShining関数を呼び出す必要がなくなるためInvokeを停止する
-            CancelInvoke("IsToothShining");
+            //CancelInvoke("IsToothShining");
 
             // 歯を光らせる
-            TargetSetting();
+            ToothShining();
 
             // 指定時間、キー入力を受け付ける
             playerInput.enabled = true;
@@ -78,19 +82,25 @@ public class ToothController : MonoBehaviour
         else
         {
             // 指定時間経過した時、再び歯を光らせる
-            Invoke("IsToothShining", 2);
+            //Invoke("IsToothShining", 2);
         }
     }
 
     /// <summary>
     /// 再び歯を光らせる
     /// </summary>
-    public void IsToothShining() { isPresentProblem = false; }
+    public void IsToothShining()
+    {
+        isPresentProblem = false;
+
+        // 
+        gameManager.SetQueueSetCnt(1);
+    }
 
     /// <summary>
-    /// 歯を光らせる
+    /// 全ての歯を光らせない
     /// </summary>
-    private void TargetSetting()
+    public void AllToothNotShining()
     {
         // 全ての歯に通常マテリアルを適用
         for (int i = 0; i <= (int)ToothPosition.ToothPlus; i++)
@@ -102,9 +112,18 @@ public class ToothController : MonoBehaviour
                     gameObject.GetComponent<MeshRenderer>().material = materialArray[(int)ToothMaterial.Normal];
             }
         }
+    }
 
-        // 光らせる歯を決める
-        int rnd = Random.Range(0, (int)ToothPosition.ToothPlus + 1);    // 8本の歯の内から1本
+    /// <summary>
+    /// 歯を光らせる
+    /// </summary>
+    private void ToothShining()
+    {
+        // 全ての歯を光らせない
+        AllToothNotShining();
+
+        // 8本の歯の内から1本、光らせる歯を決める
+        int rnd = Random.Range(0, (int)ToothPosition.ToothPlus + 1);
 
         // 上下の歯のマテリアルを操作する
         for (int j = 0; j < 2; j++)
