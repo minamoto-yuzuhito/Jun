@@ -14,7 +14,8 @@ public class ToothController : MonoBehaviour
     {
         ToothA, ToothS, ToothD, ToothF,     // 左手で操作する歯
         ToothJ, ToothK, ToothL, ToothPlus,  // 右手で操作する歯
-        AllTooth, // スペースキーは全ての歯で噛む
+        AllTooth,   // スペースキーは全ての歯で噛む
+        Empty = -1,      // 時間内にキーを押さなかった時
     }
 
     /// <summary>
@@ -34,19 +35,12 @@ public class ToothController : MonoBehaviour
     [Tooltip("ThrowingObjectSettings")]
     public ThrowingObjectSettings throwingObjectSettings;
 
-    [SerializeField]
-    [Tooltip("PlayerInput")]
-    public PlayerInput playerInput;
-
     // 歯オブジェクトを格納する配列
     private List<GameObject> tooths = new List<GameObject>();
 
     [SerializeField]
     [Tooltip("歯のマテリアル")]
     public Material[] materialArray = new Material[2];
-
-    // trueの時、歯を光らせる
-    private bool isPresentProblem;
 
     private void Start()
     {
@@ -58,50 +52,9 @@ public class ToothController : MonoBehaviour
     }
 
     /// <summary>
-    /// プレイヤーが押すべきキーを提示する
-    /// </summary>
-    public void PresentProblem()
-    {
-        // どの歯に投げるかを選択する
-        if(!isPresentProblem)
-        {
-            // キー入力を受け付ける
-            playerInput.enabled = true;
-
-            // キー入力が行われた場合、
-            // ThrowingObjectSettingsクラスでIsToothShining関数が呼び出されるため、
-            // InvokeでIsToothShining関数を呼び出す必要がなくなるためInvokeを停止する
-            //CancelInvoke("IsToothShining");
-
-            // 歯を光らせる
-            ToothShining();
-
-            // 指定時間経過するか、キー入力が行われるまで歯を光らせない
-            isPresentProblem = true;
-        }
-        // 発射されているとき
-        else
-        {
-            // 指定時間経過した時、再び歯を光らせる
-            //Invoke("IsToothShining", 2);
-        }
-    }
-
-    /// <summary>
-    /// 再び歯を光らせる
-    /// </summary>
-    public void IsToothShining()
-    {
-        isPresentProblem = false;
-
-        // 放射物の数をカウント
-        gameManager.SetQueueSetCnt(1);
-    }
-
-    /// <summary>
     /// 歯を光らせる
     /// </summary>
-    private void ToothShining()
+    public void ToothShining()
     {
         // 一旦全ての歯の発光を止める
         AllToothNotShining();

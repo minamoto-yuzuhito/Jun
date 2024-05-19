@@ -16,16 +16,17 @@ public class ThrowingObjectSettings : MonoBehaviour
 
     public void SetThrowingObject()
     {
+        // キー入力判定を格納
         int input = CheckInput();
 
         // 対応するキーが押されなかった時
         if (input < 0) return;
 
-        // キューに登録
+        // 投げる場所をキューに登録
         throwingObjects.Add((ToothPosition)input);
 
         // 歯を光らせる
-        toothController.IsToothShining();
+        GetComponent<GameManager>().AfterSelect();
     }
 
     /// <summary>
