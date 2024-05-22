@@ -105,11 +105,25 @@ public class ToothController : MonoBehaviour
             // 物が投げられる歯の種類
             ToothPosition toothPosition = throwingObjectSettings.GetThrowingObjects()[throwCnt - 1];
 
-            // 物が投げられる歯を取得
-            GameObject tooth = transform.GetChild((int)toothPosition).gameObject;
+            if(toothPosition == ToothPosition.AllTooth)
+            {
+                for(int i = 0;i < (int)ToothPosition.AllTooth; i++)
+                {
+                    // 物が投げられる歯を取得
+                    GameObject tooth = transform.GetChild(i).gameObject;
 
-            // 取得した歯で噛む動作を実行
-            tooth.GetComponent<BiteWithTeeth>().IsBite();
+                    // 取得した歯で噛む動作を実行
+                    tooth.GetComponent<BiteWithTeeth>().IsBite();
+                }
+            }
+            else
+            {
+                // 物が投げられる歯を取得
+                GameObject tooth = transform.GetChild((int)toothPosition).gameObject;
+
+                // 取得した歯で噛む動作を実行
+                tooth.GetComponent<BiteWithTeeth>().IsBite();
+            }
         }
     }
 }

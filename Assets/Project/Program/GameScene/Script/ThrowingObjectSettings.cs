@@ -38,8 +38,8 @@ public class ThrowingObjectSettings : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space)) toothPosition = (int)ToothPosition.AllTooth;
         if (Input.GetKeyDown(KeyCode.A)) toothPosition = (int)ToothPosition.ToothA;
-        if (Input.GetKeyDown(KeyCode.D)) toothPosition = (int)ToothPosition.ToothS;
-        if (Input.GetKeyDown(KeyCode.S)) toothPosition = (int)ToothPosition.ToothD;
+        if (Input.GetKeyDown(KeyCode.S)) toothPosition = (int)ToothPosition.ToothS;
+        if (Input.GetKeyDown(KeyCode.D)) toothPosition = (int)ToothPosition.ToothD;
         if (Input.GetKeyDown(KeyCode.F)) toothPosition = (int)ToothPosition.ToothF;
         if (Input.GetKeyDown(KeyCode.J)) toothPosition = (int)ToothPosition.ToothJ;
         if (Input.GetKeyDown(KeyCode.K)) toothPosition = (int)ToothPosition.ToothK;

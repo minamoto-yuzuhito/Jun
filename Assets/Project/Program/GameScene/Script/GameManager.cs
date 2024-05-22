@@ -45,7 +45,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(QueueSetCnt);
+        for(int i = 0; i < throwingObjectSettings.GetThrowingObjects().Count; i++)
+        {
+            Debug.Log(throwingObjectSettings.GetThrowingObjects()[i]);
+        }
 
         // どの歯に向かって物を投げるかを決める
         if (!isPresentProblem)
@@ -140,8 +143,7 @@ public class GameManager : MonoBehaviour
                 ThrowCnt = 0;
 
                 // キューを削除
-                List<ToothPosition> throwingObjects = throwingObjectSettings.GetThrowingObjects();
-                throwingObjects.Clear();
+                throwingObjectSettings.GetThrowingObjects().Clear();
 
                 break;
             }
@@ -154,7 +156,7 @@ public class GameManager : MonoBehaviour
             ToothPosition target = throwingObjectSettings.GetThrowingObjects()[ThrowCnt - 1];
 
             // 投げる場所が選択されていたとき
-            if(target > 0)
+            if(target >= 0)
             {
                 // キューに登録した場所に物を投げる
                 throwing.IsThrowingObject(target);
