@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     [Tooltip("Throwingクラス")]
     public Throwing throwing;
 
+    // CameraControllerクラス
+    private CameraController cameraController;
+
     private ThrowingObjectSettings throwingObjectSettings;
 
     // 放射物の数をカウント
@@ -37,6 +40,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         throwingObjectSettings = GetComponent<ThrowingObjectSettings>();
+        cameraController = GetComponent<CameraController>();
+
+        // 投げる視点のカメラに切り替える
+        cameraController.SetThrowCamera();
 
         // 投げる最大数を設定
         TotalQueue = 3;
@@ -107,6 +114,9 @@ public class GameManager : MonoBehaviour
             // キー入力を受け付けない
             isKeyInput = false;
 
+            // 発射中の視点に切り替える
+            cameraController.SetToothCamera();
+
             // 歯を光らせなくする
             toothController.AllToothNotShining();
 
@@ -133,11 +143,14 @@ public class GameManager : MonoBehaviour
             // 全て投げ終わった時
             if (ThrowCnt >= TotalQueue)
             {
-                // 再び歯を光らせる
-                isPresentProblem = false;
-
                 // キー入力を受け付ける
                 isKeyInput = true;
+
+                // 投げる視点のカメラに切り替える
+                cameraController.SetThrowCamera();
+
+                // 再び歯を光らせる
+                isPresentProblem = false;
 
                 QueueSetCnt = 0;
                 ThrowCnt = 0;
