@@ -236,6 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1269398093}
   throwingObjectSettings: {fileID: 1269398092}
+  junAnimation: {fileID: 1798840786}
   materialArray:
   - {fileID: 2100000, guid: 24b1f85e7bb0fa24d9d8614399265603, type: 2}
   - {fileID: 2100000, guid: a0a2a0ee794abbc4b9b9960fe92ff82b, type: 2}
@@ -1841,6 +1842,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3114984880231708184, guid: 810cd5024b5abc3408bcbe2bb5482d38, type: 3}
   m_PrefabInstance: {fileID: 113124493}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1798840785 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c676aee8fb6725342872b1b76f7d9cdf, type: 3}
+  m_PrefabInstance: {fileID: 1822521092}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1798840786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798840785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa3859cb447abc04f9133eae448c43da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationPlayTime: 3
+  animationSpeedSuccess: 0.2
+  animationPosXSuccess: -10
+  animationInitPosXSuccess: -30
 --- !u!1 &1807967547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1999,7 +2021,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: c676aee8fb6725342872b1b76f7d9cdf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 130309604}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c676aee8fb6725342872b1b76f7d9cdf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1798840786}
   m_SourcePrefab: {fileID: 100100000, guid: c676aee8fb6725342872b1b76f7d9cdf, type: 3}
 --- !u!1 &1866982437
 GameObject:

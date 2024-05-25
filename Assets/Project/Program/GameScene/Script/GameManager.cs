@@ -52,18 +52,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for(int i = 0; i < throwingObjectSettings.GetThrowingObjects().Count; i++)
-        {
-            Debug.Log(throwingObjectSettings.GetThrowingObjects()[i]);
-        }
-
         // どの歯に向かって物を投げるかを決める
         if (!isPresentProblem)
         {
-            // プレイヤーが押すべきキーを提示する
-            toothController.ToothShining();
+            // プレイヤーが押すべき歯を光らせる
+            toothController.ShiningTooth();
 
-            // 指定時間経過するか、キー入力が行われるまで歯を光らせない
+            // 指定時間経過するか、キー入力が行われるまで光らせる歯を固定
             isPresentProblem = true;
 
             // 投げる場所を選ばずに指定時間経過した時、
@@ -117,8 +112,11 @@ public class GameManager : MonoBehaviour
             // 発射中の視点に切り替える
             cameraController.SetToothCamera();
 
-            // 歯を光らせなくする
+            // 全ての歯を光らせなくする
             toothController.AllToothNotShining();
+
+            // 物を投げられる判定にする
+            toothController.SetIsThrowFlag(true);
 
             // 選んだ場所に物が投げられる（自動操作）
             StartCoroutine(ThrowBasedOnQueue());
@@ -131,7 +129,7 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// キューに基づいて物を投げる
+    /// キューに保存されている物を投げる
     /// </summary>
     /// <returns></returns>
     private IEnumerator ThrowBasedOnQueue()
@@ -156,27 +154,34 @@ public class GameManager : MonoBehaviour
                 ThrowCnt = 0;
 
                 // キューを削除
-                throwingObjectSettings.GetThrowingObjects().Clear();
+                throwingObjectSettings.GetThrowingObjects().Clear();    // プレイヤーが投げる場所
+                toothController.GetShiningTooths().Clear();             // 提示された（光った歯）投げる場所
 
                 break;
             }
 
-            // 投げた回数をカウント
-            ThrowCnt++;
-
-            // 投げる場所が保存されたキューから、
-            // 順番に値を引き出す
-            ToothPosition target = throwingObjectSettings.GetThrowingObjects()[ThrowCnt - 1];
-
-            // 投げる場所が選択されていたとき
-            if(target >= 0)
+            if(toothController.GetIsThrowFlag())
             {
-                // キューに登録した場所に物を投げる
-                throwing.IsThrowingObject(target);
-            }
-            else
-            {
-                Debug.Log("投げなかった");
+                // 投げた回数をカウント
+                ThrowCnt++;
+
+                toothController.SetIsThrowFlag(false);
+
+                // 投げる場所が保存されたキューから、
+                // 順番に値を引き出す
+                ToothPosition target = throwingObjectSettings.GetThrowingObjects()[ThrowCnt - 1];
+
+                // 投げる場所が選択されていたとき
+                if (target >= 0)
+                {
+                    // キューに登録した場所に物を投げる
+                    throwing.IsThrowingObject(target);
+                }
+                else
+                {
+                    Debug.Log("投げなかった");
+                    toothController.SetIsThrowFlag(true);
+                }
             }
         }
     }

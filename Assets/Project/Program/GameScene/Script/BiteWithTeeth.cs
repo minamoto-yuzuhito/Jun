@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static ToothController;
 
 /// <summary>
 /// 上下の歯を動かして、噛む動作を実行する
@@ -28,12 +29,31 @@ public class BiteWithTeeth : MonoBehaviour
     private float upperToothInitialPosY;
     private float lowerToothInitialPosY;
 
+    private ToothController toothController;
+
     // Start is called before the first frame update
     void Start()
     {
+        toothController = transform.parent.gameObject.GetComponent<ToothController>();
+
         // 上下の歯の初期座標を代入
         upperToothInitialPosY = upperTooth.transform.position.y;    // 上の歯
         lowerToothInitialPosY = lowerTooth.transform.position.y;    // 下の歯
+    }
+
+    /// <summary>
+    /// 上下の歯が初期位置にあるときtrueを返す
+    /// </summary>
+    /// <returns></returns>
+    public bool CheckMouthOpen()
+    {
+        if (upperToothInitialPosY == upperTooth.transform.position.y &&
+            lowerToothInitialPosY == lowerTooth.transform.position.y)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     /// <summary>
@@ -41,13 +61,6 @@ public class BiteWithTeeth : MonoBehaviour
     /// </summary>
     public void IsBite()
     {
-        // 歯が動いているときは噛まない
-        if(upperToothInitialPosY != upperTooth.transform.position.y ||
-            lowerToothInitialPosY != lowerTooth.transform.position.y)
-        {
-            return;
-        }
-
         // 上の歯を下に移動
         upperTooth.transform.DOMoveY(lowerToothInitialPosY, mouthCloseSpeed).
         SetEase(Ease.InOutQuart);   // イージング設定
@@ -55,5 +68,43 @@ public class BiteWithTeeth : MonoBehaviour
         // 下の歯を上に移動
         lowerTooth.transform.DOMoveY(upperToothInitialPosY, mouthCloseSpeed).
         SetEase(Ease.InOutQuart);   // イージング設定
+    }
+
+    /// <summary>
+    /// 口を開いた状態にする
+    /// </summary>
+    public void IsMouthOpen()
+    {
+        // IsBiteで実行されているものを停止
+        upperTooth.transform.DOKill();
+        lowerTooth.transform.DOKill();
+
+        // 上の歯を初期位置に移動
+        upperTooth.transform.DOMoveY(upperToothInitialPosY, mouthCloseSpeed).
+        SetEase(Ease.InOutQuart);   // イージング設定
+
+        // 下の歯を初期位置に移動
+        lowerTooth.transform.DOMoveY(lowerToothInitialPosY, mouthCloseSpeed).
+        SetEase(Ease.InOutQuart);   // イージング設定
+
+        // 
+        StartCoroutine(ThrowBasedOnQueue());
+    }
+
+    private IEnumerator ThrowBasedOnQueue()
+    {
+        while (true)
+        {
+            // 歯が初期位置に戻った時
+            if (CheckMouthOpen())
+            {
+                // 正しい場所に投げられたかを判定
+                // 結果に応じたアニメーションを実行
+                toothController.CheckRightTheow();
+                break;
+            }
+
+            yield return null;
+        }
     }
 }

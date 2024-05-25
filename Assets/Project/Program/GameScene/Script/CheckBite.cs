@@ -8,27 +8,13 @@ using UnityEngine;
 /// </summary>
 public class CheckBite : MonoBehaviour
 {
-    // 初期座標（高さ）
-    private float toothInitialPosY;
-
-    void Start()
-    {
-        // 歯の初期座標を代入
-        toothInitialPosY = transform.position.y;
-    }
-
     void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("当たった!");
-
         // 他の歯に当たった時
         if (other.CompareTag("Tooth"))
         {
-            transform.DOKill();
-
             // 歯を初期座標に戻す
-            transform.DOMoveY(toothInitialPosY, 1).
-            SetEase(Ease.InOutQuart);   // イージング設定
+            transform.parent.gameObject.GetComponent<BiteWithTeeth>().IsMouthOpen();
         }
 
         // 放射物に当たった時
