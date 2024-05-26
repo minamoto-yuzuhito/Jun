@@ -9,13 +9,14 @@ public class JunAnimation : MonoBehaviour
     private Vector3 junInitialPos;
     private Vector3 junInitialRot;
 
-    // アニメーションの再生時間
-    public float animationPlayTime = 1.0f;
-
     // 成功時のアニメーション
-    public float animationSpeedSuccess = 0.2f;      // アニメーション速度
+    public float animationPlayTimeSuccess = 0.2f;   // アニメーションの再生時間
     public float animationPosXSuccess = -10f;       // 開始時の座標
     public float animationInitPosXSuccess = -30f;   // 終了時の座標
+
+    // 失敗時のアニメーション
+    public float animationPlayTimeMiss = 0.6f;   // アニメーションの再生時間
+    public float animationInitPosYMiss = -5f;   // 終了時の座標
 
     private ToothController toothController;
 
@@ -47,11 +48,11 @@ public class JunAnimation : MonoBehaviour
 
         
         rotate.x = animationInitPosXSuccess;
-        transform.DORotate(rotate, animationSpeedSuccess, RotateMode.WorldAxisAdd)   //ワールド軸に対して
+        transform.DORotate(rotate, animationPlayTimeSuccess, RotateMode.WorldAxisAdd)   //ワールド軸に対して
             .SetLoops(-1, LoopType.Yoyo);
 
         // 指定秒後にアニメーションを停止する
-        Invoke("StopAnimation", animationPlayTime);
+        Invoke("StopAnimation", animationPlayTimeSuccess * 6);
     }
 
     /// <summary>
@@ -59,8 +60,12 @@ public class JunAnimation : MonoBehaviour
     /// </summary>
     public void Miss()
     {
+        transform.DOMoveY(animationInitPosYMiss, animationPlayTimeMiss).
+            SetEase(Ease.OutQuart).
+            SetLoops(-1, LoopType.Yoyo);
+
         // 指定秒後にアニメーションを停止する
-        Invoke("StopAnimation", animationPlayTime);
+        Invoke("StopAnimation", animationPlayTimeMiss * 2);
     }
 
     private void StopAnimation()

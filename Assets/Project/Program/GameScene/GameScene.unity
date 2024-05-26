@@ -1859,10 +1859,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3859cb447abc04f9133eae448c43da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationPlayTime: 3
-  animationSpeedSuccess: 0.2
+  animationPlayTimeSuccess: 0.2
   animationPosXSuccess: -10
   animationInitPosXSuccess: -30
+  animationPlayTimeMiss: 0.6
+  animationInitPosYMiss: -5
 --- !u!1 &1807967547
 GameObject:
   m_ObjectHideFlags: 0
