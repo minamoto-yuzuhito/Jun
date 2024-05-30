@@ -26,7 +26,7 @@ public class ThrowingObjectSettings : MonoBehaviour
         throwingObjects.Add((ToothPosition)input);
 
         // 歯を光らせる
-        GetComponent<GameManager>().AfterSelect();
+        GetComponent<GameManager>().NextTurn();
     }
 
     /// <summary>

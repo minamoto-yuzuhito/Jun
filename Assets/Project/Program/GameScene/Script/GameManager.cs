@@ -1,6 +1,8 @@
 using DG.Tweening.Core.Easing;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static ToothController;
 
@@ -13,6 +15,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     [Tooltip("Throwingクラス")]
     public Throwing throwing;
+
+    [SerializeField]
+    [Tooltip("Countdownクラス")]
+    public Countdown countdown;
 
     // CameraControllerクラス
     private CameraController cameraController;
@@ -36,6 +42,13 @@ public class GameManager : MonoBehaviour
     // trueの時、キー入力を受け付ける
     private bool isKeyInput = true;
 
+    // キー入力受付時間
+    private float keyInputReceptionTime;
+
+    // カウントダウン
+    private float countdownSeconds; // タイマー
+    private bool isCountdown = false; // trueのときカウントダウンを行う
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +65,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        for (int i = 1; i <= throwingObjectSettings.GetThrowingObjects().Count; i++)
+        {
+            Debug.Log(i + "：" + throwingObjectSettings.GetThrowingObjects()[i - 1]);
+        }
+
         // どの歯に向かって物を投げるかを決める
         if (!isPresentProblem)
         {
@@ -61,9 +79,31 @@ public class GameManager : MonoBehaviour
             // 指定時間経過するか、キー入力が行われるまで光らせる歯を固定
             isPresentProblem = true;
 
+            // カウントダウンを行う際の変数の値を設定
+            SetCountdownStatus();
+        }
+
+        // カウントダウンを行って、
+        // 指定された時間キー入力されたかを判定する
+        if (isCountdown)
+        {
+            // 時間をカウント
+            countdownSeconds += Time.deltaTime;
+
             // 投げる場所を選ばずに指定時間経過した時、
             // 選ばなかった判定をキューに追加する
-            Invoke("AfterNotSelect", 2);
+            if (countdownSeconds >= keyInputReceptionTime)
+            {
+                // 選ばなかった判定をキューに追加
+                throwingObjectSettings.GetThrowingObjects().Add(ToothPosition.Empty);
+
+                NextTurn();
+            }
+            else
+            {
+                // カウントダウンUIを描画
+                countdown.IsCountdown(keyInputReceptionTime);
+            }
         }
 
         // キー入力を受け付けて、どの歯に投げるかを決める
@@ -74,32 +114,34 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 投げる場所を選んだ後の処理
+    /// カウントダウンを行う際の変数の値を設定
     /// </summary>
-    public void AfterSelect()
+    private void SetCountdownStatus()
     {
-        // キーが押されたのでInvokeを停止
-        CancelInvoke("AfterNotSelect");
+        // カウントダウンを行う
+        isCountdown = true;
 
-        NextTurn();
+        // キー入力受付時間を設定
+        keyInputReceptionTime = 2.0f;
+
+        // カウントダウンタイマーをリセット
+        countdownSeconds = 0.0f;
+
+        // メーターを表示
+        countdown.IsViewMeter(true);
     }
 
     /// <summary>
-    /// 投げる場所を選ばなかった後の処理
+    /// ターンを進める
     /// </summary>
-    private void AfterNotSelect()
+    public void NextTurn()
     {
-        // 選ばなかった判定をキューに追加
-        throwingObjectSettings.GetThrowingObjects().Add(ToothPosition.Empty);
+        // カウントダウンを停止
+        isCountdown = false;
 
-        NextTurn();
-    }
+        // メーターを非表示
+        countdown.IsViewMeter(false);
 
-    /// <summary>
-    /// 投げる場所を選んだ後の処理
-    /// </summary>
-    private void NextTurn()
-    {
         // 放射物の数をカウント
         QueueSetCnt++;
 
@@ -108,6 +150,9 @@ public class GameManager : MonoBehaviour
         {
             // キー入力を受け付けない
             isKeyInput = false;
+
+            // カウントダウンを行わない
+            isCountdown = false;
 
             // 発射中の視点に切り替える
             cameraController.SetToothCamera();
