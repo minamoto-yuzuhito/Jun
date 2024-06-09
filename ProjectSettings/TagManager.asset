@@ -6,6 +6,22 @@ TagManager:
   tags:
   - Tooth
   - ThrowingObject
+  - Head
+  - Neck
+  - Chest
+  - RightShoulder
+  - RightArm
+  - RightHand
+  - LeftShoulder
+  - LeftArm
+  - LeftHand
+  - Waist
+  - RightThigh
+  - RightShin
+  - RightFoot
+  - LeftThigh
+  - LeftShin
+  - LeftFoot
   layers:
   - Default
   - TransparentFX

@@ -30,15 +30,15 @@ public class ToothController : MonoBehaviour
 
     [SerializeField]
     [Tooltip("GameManager")]
-    public GameManager gameManager;
+    private GameManager gameManager;
 
     [SerializeField]
     [Tooltip("ThrowingObjectSettings")]
-    public ThrowingObjectSettings throwingObjectSettings;
+    private ThrowingObjectSettings throwingObjectSettings;
 
     [SerializeField]
     [Tooltip("JunAnimation")]
-    public JunAnimation junAnimation;
+    private JunAnimation junAnimation;
 
     // 歯オブジェクトを格納する配列
     private List<GameObject> tooths = new List<GameObject>();
@@ -49,7 +49,7 @@ public class ToothController : MonoBehaviour
 
     [SerializeField]
     [Tooltip("歯のマテリアル")]
-    public Material[] materialArray = new Material[2];
+    private Material[] materialArray = new Material[2];
 
     // trueのとき物を投げた後のアニメーションが終了
     // 再び物が投げられる状態にあります

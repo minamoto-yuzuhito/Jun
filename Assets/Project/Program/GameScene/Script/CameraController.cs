@@ -6,15 +6,15 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("投げる視点のカメラ")]
-    public Camera ThrowCamera;
+    private Camera ThrowCamera;
 
     [SerializeField]
     [Tooltip("歯の正面視点のカメラ")]
-    public Camera ToothCamera;
+    private Camera ToothCamera;
 
     [SerializeField]
     [Tooltip("サブカメラのキャンバスグループ")]
-    public CanvasGroup SubCamera;
+    private CanvasGroup SubCamera;
 
     /// <summary>
     /// 投げる視点のカメラに切り替える

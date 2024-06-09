@@ -8,7 +8,7 @@ public class ThrowingObjectSettings : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("ToothControllerクラス")]
-    public ToothController toothController;
+    private ToothController toothController;
 
     // 投げる物を順番に格納する
     private List<ToothPosition> throwingObjects = new List<ToothPosition>();

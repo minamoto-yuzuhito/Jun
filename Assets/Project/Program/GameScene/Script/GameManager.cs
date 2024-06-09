@@ -10,15 +10,15 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("ToothControllerクラス")]
-    public ToothController toothController;
+    private ToothController toothController;
 
     [SerializeField]
     [Tooltip("Throwingクラス")]
-    public Throwing throwing;
+    private Throwing throwing;
 
     [SerializeField]
     [Tooltip("Countdownクラス")]
-    public Countdown countdown;
+    private Countdown countdown;
 
     // CameraControllerクラス
     private CameraController cameraController;

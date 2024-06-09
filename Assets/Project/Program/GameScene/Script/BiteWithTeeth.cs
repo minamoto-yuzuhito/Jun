@@ -11,19 +11,19 @@ public class BiteWithTeeth : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("上の歯")]
-    public GameObject upperTooth;
+    private GameObject upperTooth;
 
     [SerializeField]
     [Tooltip("下の歯")]
-    public GameObject lowerTooth;
+    private GameObject lowerTooth;
 
     [SerializeField]
     [Tooltip("口を閉じる速度")]
-    public float mouthCloseSpeed = 0.5f;
+    private float mouthCloseSpeed = 0.5f;
 
     [SerializeField]
     [Tooltip("口を開く速度")]
-    public float mouthOpenSpeed = 1.0f;
+    private float mouthOpenSpeed = 1.0f;
 
     // 初期座標（高さ）
     private float upperToothInitialPosY;
