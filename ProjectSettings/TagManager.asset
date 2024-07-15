@@ -22,6 +22,7 @@ TagManager:
   - LeftThigh
   - LeftShin
   - LeftFoot
+  - CinemachineTarget
   layers:
   - Default
   - TransparentFX
@@ -30,7 +31,7 @@ TagManager:
   - Water
   - UI
   - PostProcess
-  - 
+  - Ghost
   - 
   - 
   - 
