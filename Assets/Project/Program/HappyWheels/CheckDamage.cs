@@ -63,7 +63,7 @@ public class CheckDamage : MonoBehaviour
         // ƒ^ƒO‚Ì•¶Žš—ñ‚ðenumŒ^‚Ö•ÏŠ·
         bodyPartsType = (BodyParts)Enum.Parse(typeof(BodyParts), transform.tag);
 
-        Debug.Log(bodyPartsType);
+        //Debug.Log(bodyPartsType);
     }
 
     // <summary>
