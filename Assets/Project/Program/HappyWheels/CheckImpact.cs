@@ -18,6 +18,10 @@ public class CheckImpact : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.impulse.magnitude);
+        // ??‚Å’@‚©‚ê‚½‚Æ‚«
+        if (collision.impulse.magnitude > 50)
+        {
+            //Destroy(gameObject);
+        }
     }
 }

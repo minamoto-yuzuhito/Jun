@@ -57,8 +57,8 @@ public class CheckDamage : MonoBehaviour
 
     private void Start()
     {
-        // 親オブジェクトを取得
-        parent = transform.parent.gameObject;
+        // 一番上の親オブジェクトを取得
+        parent = transform.root.gameObject;
 
         // タグの文字列をenum型へ変換
         bodyPartsType = (BodyParts)Enum.Parse(typeof(BodyParts), transform.tag);
