@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class HammerController : MonoBehaviour
 {
-    public Ease ease = Ease.InOutQuart;
+    [SerializeField]
+    [Tooltip("ƒnƒ“ƒ}[‚ª‰ñ“]‚·‚éÛ‚Ì“®‚«•Ğ")]
+    private Ease ease = Ease.InElastic;
 
     // Start is called before the first frame update
     void Start()

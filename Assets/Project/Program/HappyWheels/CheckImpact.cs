@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class CheckImpact : MonoBehaviour
 {
+    [SerializeField]
+    [Tooltip("肉片")]
+    private GameObject pieceOfMeat;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,12 +20,25 @@ public class CheckImpact : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// 身体のパーツが強い衝撃を受けたら肉片に置換する
+    /// </summary>
+    /// <param name="collision"></param>
     void OnCollisionEnter(Collision collision)
     {
-        // ??で叩かれたとき
-        if (collision.impulse.magnitude > 50)
+        Debug.Log(collision.impulse.magnitude);
+
+        // 強い衝撃を受けたとき
+        if (collision.impulse.magnitude > 10)
         {
-            //Destroy(gameObject);
+            // 衝撃を受けた位置に肉片を生成
+            for (int i = 0; i < 7; i++)
+            {
+                Instantiate(pieceOfMeat, transform.position, Quaternion.identity);
+            }
+
+            // 衝撃を受けた体の部位を削除
+            Destroy(gameObject);
         }
     }
 }

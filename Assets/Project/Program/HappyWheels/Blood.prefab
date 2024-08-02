@@ -124,4 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00d09e23024ed484c9b2ff910b998880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bloodMoveShaking: {x: 2, y: 2, z: 2}
   speed: 2
+  time: 2
