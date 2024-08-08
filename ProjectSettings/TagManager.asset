@@ -23,6 +23,8 @@ TagManager:
   - LeftShin
   - LeftFoot
   - CinemachineTarget
+  - LawnMower
+  - BodyParts
   layers:
   - Default
   - TransparentFX
@@ -32,7 +34,7 @@ TagManager:
   - UI
   - PostProcess
   - Ghost
-  - 
+  - Body
   - 
   - 
   - 

@@ -26,10 +26,10 @@ public class CheckImpact : MonoBehaviour
     /// <param name="collision"></param>
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.impulse.magnitude);
+        //Debug.Log(transform.tag + "F" + collision.impulse.magnitude);
 
         // ‹­‚¢ÕŒ‚‚ğó‚¯‚½‚Æ‚«
-        if (collision.impulse.magnitude > 10)
+        if (collision.impulse.magnitude > 40)
         {
             // ÕŒ‚‚ğó‚¯‚½ˆÊ’u‚É“÷•Ğ‚ğ¶¬
             for (int i = 0; i < 7; i++)
