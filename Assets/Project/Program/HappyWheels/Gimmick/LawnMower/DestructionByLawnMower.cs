@@ -10,7 +10,7 @@ public class DestructionByLawnMower : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("Destroyする時間を指定する")]
-    private float time = 5;
+    private float time = 5.0f;
 
     /// <summary>
     /// オブジェクトがすり抜けたとき
@@ -25,8 +25,8 @@ public class DestructionByLawnMower : MonoBehaviour
             // 指定時間経過で削除
             Destroy(other.gameObject.transform.parent.gameObject, time);
         }
-        // 芝刈り機の吸い込み口オブジェクト
-        else if (other.gameObject.CompareTag("LawnMowerStartPoint"))
+        // 芝刈り機の奥に連れていくオブジェクト
+        else if (other.gameObject.CompareTag("PullBehindTheLawnMower"))
         {
             // 指定時間経過で削除
             Destroy(other.gameObject, time);

@@ -8,18 +8,6 @@ public class CheckImpact : MonoBehaviour
     [Tooltip("肉片")]
     private GameObject pieceOfMeat;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     /// <summary>
     /// 身体のパーツが強い衝撃を受けたら肉片に置換する
     /// </summary>

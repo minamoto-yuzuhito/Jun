@@ -6,7 +6,7 @@ using UnityEngine;
 public class HammerController : MonoBehaviour
 {
     [SerializeField]
-    [Tooltip("ハンマーが回転する際の動き片")]
+    [Tooltip("ハンマーが回転する際の動き方")]
     private Ease ease = Ease.InElastic;
 
     // Start is called before the first frame update

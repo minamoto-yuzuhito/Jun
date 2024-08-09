@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("’e‚Ì‘¬“x")]
-    private float speed;
+    private float speed = 5.0f;
 
     void Update()
     {

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static ToothController;
 
 /// <summary>
 /// 芝刈り機の動き
@@ -9,25 +10,80 @@ using UnityEngine;
 public class LawnMower : MonoBehaviour
 {
     [SerializeField]
-    [Tooltip("芝刈り機がオブジェクトを吸い込む速度")]
-    private float speed;
+    [Tooltip("芝刈り機の奥に連れていくオブジェクト")]
+    private GameObject pullBehindTheLawnMower;
 
     [SerializeField]
-    [Tooltip("芝刈り機の吸い込み口オブジェクト")]
-    private GameObject lawnMowerStartPoint;
+    [Tooltip("SuctionArea")]
+    private GameObject suctionArea;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // カウントダウン
+    [SerializeField]
+    [Tooltip("吸い込みエリア生成のインターバル")]
+    private float intervalOfCreateSuctionArea = 1.0f;
+    private float coolTimeSeconds; // タイマー計測用
+    private bool isCoolTime = false; // trueのときカウントダウンを行う
 
-    // Update is called once per frame
-    void Update()
+    // 生成した吸い込みエリアを格納
+    private List<GameObject> suctionAreas = new List<GameObject>();
+
+    /// <summary>
+    /// 芝刈り機に向かってくる吸い込みエリアを生成
+    /// </summary>
+    public bool IsCreateSuctionArea()
     {
-        // 芝刈り機の「底」に向かう方向ベクトル
-        //Vector3 direction = Quaternion.Euler(transform.rotation.eulerAngles) * Vector3.down;
-        //carvedList[i].transform.parent.GetComponent<Rigidbody>().AddForce(direction, ForceMode.Impulse);
+        // クリックしているかの判定
+        bool isClick = false;
+
+        // 左クリック中
+        if (Input.GetMouseButton(0))
+        {
+            // クリックしている判定
+            isClick = true;
+
+            // クールタイム中ではないとき
+            if (!isCoolTime)
+            {
+                // 吸い込みエリア生成
+                Vector3 pos = transform.position;
+                pos.y -= 5.0f;
+                suctionAreas.Add(Instantiate(suctionArea, pos, Quaternion.identity));   // 格納
+
+                // クールタイム突入
+                isCoolTime = true;
+            }
+        }
+        // 離したとき
+        else
+        {
+            // クールタイム解除
+            coolTimeSeconds = 0.0f;
+            isCoolTime = false;
+
+            // 生成した数分ループ
+            for (int i = 0; i < suctionAreas.Count; i++)
+            {
+                Destroy(suctionAreas[i]);
+            }
+        }
+
+        // クールタイム中
+        if (isCoolTime)
+        {
+            // 時間をカウント
+            coolTimeSeconds += Time.deltaTime;
+
+            // 指定時間経過した時
+            if (coolTimeSeconds >= intervalOfCreateSuctionArea)
+            {
+                // クールタイム解除
+                coolTimeSeconds = 0.0f;
+                isCoolTime = false;
+            }
+        }
+
+        // クリックしているかの判定を返す
+        return isClick;
     }
 
     /// <summary>
@@ -41,9 +97,9 @@ public class LawnMower : MonoBehaviour
         {
             Debug.Log("すり抜けた！");
 
-            // 吸い込み口を生成
+            // 芝刈り機の奥に連れていくオブジェクトを生成
             GameObject startPoint = Instantiate(
-                lawnMowerStartPoint, other.transform.position, Quaternion.identity, transform.parent);
+                pullBehindTheLawnMower, other.transform.position, Quaternion.identity, transform.parent);
 
             // FixedJointコンポーネントがアタッチされていないとき
             if (other.transform.parent.GetComponent<FixedJoint>() == null)

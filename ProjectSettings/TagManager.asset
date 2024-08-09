@@ -25,7 +25,8 @@ TagManager:
   - CinemachineTarget
   - LawnMower
   - BodyParts
-  - LawnMowerStartPoint
+  - PullBehindTheLawnMower
+  - InhaleZone
   layers:
   - Default
   - TransparentFX
