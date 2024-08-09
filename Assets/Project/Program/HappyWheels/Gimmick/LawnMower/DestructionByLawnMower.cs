@@ -26,7 +26,7 @@ public class DestructionByLawnMower : MonoBehaviour
             Destroy(other.gameObject.transform.parent.gameObject, time);
         }
         // 芝刈り機の吸い込み口オブジェクト
-        else
+        else if (other.gameObject.CompareTag("LawnMowerStartPoint"))
         {
             // 指定時間経過で削除
             Destroy(other.gameObject, time);

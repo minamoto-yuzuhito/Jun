@@ -25,6 +25,7 @@ TagManager:
   - CinemachineTarget
   - LawnMower
   - BodyParts
+  - LawnMowerStartPoint
   layers:
   - Default
   - TransparentFX
@@ -35,8 +36,8 @@ TagManager:
   - PostProcess
   - Ghost
   - Body
-  - 
-  - 
+  - Cannon
+  - Player
   - 
   - 
   - 
