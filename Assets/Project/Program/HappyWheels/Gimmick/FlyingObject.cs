@@ -1,11 +1,16 @@
 using UnityEngine;
 using System.Collections;
+using Cinemachine;
 
 /// <summary>
 /// 空中浮遊移動
 /// </summary>
 public class FlyingObject : MonoBehaviour
 {
+    [SerializeField]
+    [Tooltip("CinemachineVirtualCamera")]
+    private CinemachineVirtualCamera playerMoveVirtualCamera;
+
     private const float G = 9.9f;
 
     Rigidbody rb;
@@ -21,6 +26,9 @@ public class FlyingObject : MonoBehaviour
     /// </summary>
     public void IsMove()
     {
+        // カメラを見下ろし視点に設定
+        playerMoveVirtualCamera.enabled = true;
+
         // 位置Yだけ固定
         rb.constraints = RigidbodyConstraints.FreezePositionY;
 
@@ -59,6 +67,9 @@ public class FlyingObject : MonoBehaviour
     /// </summary>
     public void IsStop()
     {
+        // 横から見る
+        playerMoveVirtualCamera.enabled = false;
+
         // 速度
         var velocity = new Vector3(0, 0, 0);
         rb.velocity = velocity * Time.deltaTime;

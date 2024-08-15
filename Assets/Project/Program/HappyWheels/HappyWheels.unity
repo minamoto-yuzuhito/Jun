@@ -1276,7 +1276,7 @@ GameObject:
   - component: {fileID: 153650943}
   - component: {fileID: 153650942}
   m_Layer: 10
-  m_Name: Cube
+  m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1983,7 +1983,7 @@ GameObject:
   - component: {fileID: 199242916}
   - component: {fileID: 199242915}
   m_Layer: 10
-  m_Name: Cube
+  m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3374,7 +3374,7 @@ GameObject:
   - component: {fileID: 312459579}
   - component: {fileID: 312459578}
   m_Layer: 10
-  m_Name: Cube
+  m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9635,7 +9635,7 @@ GameObject:
   - component: {fileID: 956327902}
   - component: {fileID: 956327901}
   m_Layer: 0
-  m_Name: Cinemachine Virtual Camera
+  m_Name: PlayerMoveVirtualCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9688,14 +9688,81 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 956327900}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.70090926, y: 0, z: 0, w: 0.71325046}
+  m_LocalRotation: {x: 0.70090926, y: -0, z: -0, w: 0.71325046}
   m_LocalPosition: {x: 0, y: 17.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2080985688}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2116228394}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &957758678
+GameObject:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 957758679}
+  - component: {fileID: 957758681}
+  - component: {fileID: 957758680}
+  m_Layer: 0
+  m_Name: cm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &957758679
+Transform:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957758678}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.36383805, y: -8.5456704e-17, z: -3.4059544e-18, w: 0.9314623}
+  m_LocalPosition: {x: 0, y: 3.1392586, z: 1.5020894}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1738258287}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &957758680
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957758678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BindingMode: 4
+  m_FollowOffset: {x: 0, y: -2, z: -8}
+  m_XDamping: 1
+  m_YDamping: 1
+  m_ZDamping: 1
+  m_AngularDampingMode: 0
+  m_PitchDamping: 0
+  m_YawDamping: 0
+  m_RollDamping: 0
+  m_AngularDamping: 0
+--- !u!114 &957758681
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957758678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &963021473 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7275060808231794225, guid: d3fd7c181d99d2147b69bc7c06459d12, type: 3}
@@ -18428,7 +18495,7 @@ GameObject:
   - component: {fileID: 1723521108}
   - component: {fileID: 1723521107}
   m_Layer: 10
-  m_Name: Cube
+  m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18892,6 +18959,78 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7275060808231794225, guid: d3fd7c181d99d2147b69bc7c06459d12, type: 3}
   m_PrefabInstance: {fileID: 453077469}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1738258285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1738258287}
+  - component: {fileID: 1738258286}
+  m_Layer: 0
+  m_Name: SuctionVirtualCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1738258286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738258285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExcludedPropertiesInInspector:
+  - m_Script
+  m_LockStageInInspector: 
+  m_StreamingVersion: 20170927
+  m_Priority: 10
+  m_StandbyUpdate: 2
+  m_LookAt: {fileID: 1863684186}
+  m_Follow: {fileID: 1863684186}
+  m_Lens:
+    FieldOfView: 40
+    OrthographicSize: 10
+    NearClipPlane: 0.1
+    FarClipPlane: 5000
+    Dutch: 0
+    ModeOverride: 0
+    LensShift: {x: 0, y: 0}
+    GateFit: 2
+    FocusDistance: 10
+    m_SensorSize: {x: 1, y: 1}
+  m_Transitions:
+    m_BlendHint: 0
+    m_InheritPosition: 0
+    m_OnCameraLive:
+      m_PersistentCalls:
+        m_Calls: []
+  m_LegacyBlendHint: 0
+  m_ComponentOwner: {fileID: 957758679}
+--- !u!4 &1738258287
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738258285}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 3, z: -8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 957758679}
+  m_Father: {fileID: 2116228394}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &1753457560 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7275060808231794225, guid: d3fd7c181d99d2147b69bc7c06459d12, type: 3}
@@ -19828,7 +19967,7 @@ GameObject:
   - component: {fileID: 1820000065}
   - component: {fileID: 1820000064}
   m_Layer: 10
-  m_Name: Cube
+  m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19972,6 +20111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8477642c06397e441b9273ade5928405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMoveVirtualCamera: {fileID: 956327901}
 --- !u!54 &1863684188
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22886,6 +23026,39 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7275060808231794225, guid: d3fd7c181d99d2147b69bc7c06459d12, type: 3}
   m_PrefabInstance: {fileID: 340595488}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2116228393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2116228394}
+  m_Layer: 0
+  m_Name: Cinemachine Virtual Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2116228394
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116228393}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 956327902}
+  - {fileID: 1738258287}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2116249846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23060,8 +23233,8 @@ MonoBehaviour:
   m_UpdateMethod: 2
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
-    m_Style: 1
-    m_Time: 2
+    m_Style: 5
+    m_Time: 1
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -23375,7 +23548,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 826213594}
   - {fileID: 2126479702}
-  - {fileID: 956327902}
+  - {fileID: 2116228394}
   - {fileID: 998558292}
   - {fileID: 1937154168}
   - {fileID: 265399573}
