@@ -21,6 +21,9 @@ public class FlyingObject : MonoBehaviour
     /// </summary>
     public void IsMove()
     {
+        // 位置Yだけ固定
+        rb.constraints = RigidbodyConstraints.FreezePositionY;
+
         //--- 移動 ---//
         var velocity = new Vector3(0, 0, 0);
         velocity.x += Input.GetAxis("Horizontal");
@@ -62,5 +65,8 @@ public class FlyingObject : MonoBehaviour
 
         // 角度
         rb.rotation = Quaternion.identity;
+
+        // 回転、位置ともに固定
+        rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 }
