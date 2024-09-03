@@ -25,7 +25,7 @@ public class Cannon : MonoBehaviour
         if (!isShot)
         {
             // íeÇê∂ê¨
-            Instantiate(bullet, transform.position, transform.localRotation);
+            Instantiate(bullet, transform.position, transform.rotation);
 
             // î≠éÀÇµÇΩîªíË
             isShot = true;

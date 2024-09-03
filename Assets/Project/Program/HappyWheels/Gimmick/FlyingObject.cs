@@ -9,7 +9,7 @@ public class FlyingObject : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("CinemachineVirtualCamera")]
-    private CinemachineVirtualCamera playerMoveVirtualCamera;
+    private CinemachineVirtualCamera suctionVirtualCamera;
 
     private const float G = 9.9f;
 
@@ -27,7 +27,7 @@ public class FlyingObject : MonoBehaviour
     public void IsMove()
     {
         // カメラを見下ろし視点に設定
-        playerMoveVirtualCamera.enabled = true;
+        suctionVirtualCamera.enabled = false;
 
         // 位置Yだけ固定
         rb.constraints = RigidbodyConstraints.FreezePositionY;
@@ -68,7 +68,7 @@ public class FlyingObject : MonoBehaviour
     public void IsStop()
     {
         // 横から見る
-        playerMoveVirtualCamera.enabled = false;
+        suctionVirtualCamera.enabled = true;
 
         // 速度
         var velocity = new Vector3(0, 0, 0);
