@@ -59,7 +59,7 @@ public class FlyingObject : MonoBehaviour
             xEular = -5.0f;
         }
         var eular = new Vector3(xEular, 0, zEular);
-        rb.rotation = Quaternion.Euler(eular);
+        //rb.rotation = Quaternion.Euler(eular);
     }
 
     /// <summary>
