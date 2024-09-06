@@ -57,8 +57,8 @@ public class CheckDamage : MonoBehaviour
 
     private void Start()
     {
-        // 一番上の親オブジェクトを取得
-        parent = transform.root.gameObject;
+        // 1つ階層が上の親オブジェクトを取得
+        parent = transform.parent.gameObject;
 
         // タグの文字列をenum型へ変換
         bodyPartsType = (BodyParts)Enum.Parse(typeof(BodyParts), transform.tag);
@@ -67,19 +67,19 @@ public class CheckDamage : MonoBehaviour
     }
 
     // <summary>
-    // 指定されたオブジェクトから出血する
+    // 指定されたオブジェクト（身体パーツのこと）から出血する
     // </summary>
     // <param name = "BodyParts" ></ param >
     private void SetBleedingLocation(BodyParts BodyParts, BleedingLocation BleedingLocation)
     {
-        // このスクリプトがアタッチされたオブジェクトと接続していた箇所から出血
+        // このオブジェクトから出血
         if(BleedingLocation == BleedingLocation.Myself)
         {
             // 出血箇所のゲームオブジェクトを取得
             GameObject bleedingLocation = transform.GetChild(0).gameObject;
             IsBloodLoss(bleedingLocation);
         }
-        // 接続先のオブジェクトから出血
+        // このオブジェクトの接続先のオブジェクトから出血
         else
         {
             // 出血場所のゲームオブジェクトを取得
@@ -94,10 +94,10 @@ public class CheckDamage : MonoBehaviour
     /// </summary>
     void OnJointBreak(float breakForce)
     {
-        // このスクリプトがアタッチされたオブジェクトと接続していた箇所から出血
+        // このオブジェクトから出血
         SetBleedingLocation(BodyParts.None, BleedingLocation.Myself);
 
-        // 接続先のオブジェクトから出血
+        // このオブジェクトの接続先のオブジェクトから出血
         switch (bodyPartsType)
         {
             // 頭が外れたとき、胸上から出血

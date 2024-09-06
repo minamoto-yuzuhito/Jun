@@ -117,7 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 935161426865785343}
   m_Layer: 0
-  m_Name: Human
+  m_Name: Human (Head Split)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1514,8 +1514,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1000
-  m_BreakTorque: 1000
+  m_BreakForce: 2000
+  m_BreakTorque: 2000
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
   m_MassScale: 1
@@ -1795,8 +1795,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1000
-  m_BreakTorque: 1000
+  m_BreakForce: 2000
+  m_BreakTorque: 2000
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
   m_MassScale: 1
@@ -2023,8 +2023,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1000
-  m_BreakTorque: 1000
+  m_BreakForce: 2000
+  m_BreakTorque: 2000
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
   m_MassScale: 1
@@ -2241,8 +2241,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1000
-  m_BreakTorque: 1000
+  m_BreakForce: 2000
+  m_BreakTorque: 2000
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
   m_MassScale: 1
@@ -2773,8 +2773,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1000
-  m_BreakTorque: 1000
+  m_BreakForce: 2000
+  m_BreakTorque: 2000
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
   m_MassScale: 1
@@ -3301,8 +3301,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1000
-  m_BreakTorque: 1000
+  m_BreakForce: 2000
+  m_BreakTorque: 2000
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
   m_MassScale: 1
@@ -3523,8 +3523,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1000
-  m_BreakTorque: 1000
+  m_BreakForce: 2000
+  m_BreakTorque: 2000
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
   m_MassScale: 1
@@ -3932,8 +3932,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1000
-  m_BreakTorque: 1000
+  m_BreakForce: 2000
+  m_BreakTorque: 2000
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
   m_MassScale: 1
@@ -4536,8 +4536,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1000
-  m_BreakTorque: 1000
+  m_BreakForce: 2000
+  m_BreakTorque: 2000
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
   m_MassScale: 1
@@ -4816,8 +4816,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1000
-  m_BreakTorque: 1000
+  m_BreakForce: 2000
+  m_BreakTorque: 2000
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
   m_MassScale: 1
@@ -5040,8 +5040,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1000
-  m_BreakTorque: 1000
+  m_BreakForce: 2000
+  m_BreakTorque: 2000
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
   m_MassScale: 1
@@ -5550,8 +5550,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1000
-  m_BreakTorque: 1000
+  m_BreakForce: 2000
+  m_BreakTorque: 2000
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
   m_MassScale: 1
@@ -6143,8 +6143,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1000
-  m_BreakTorque: 1000
+  m_BreakForce: 2000
+  m_BreakTorque: 2000
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
   m_MassScale: 1
@@ -6365,8 +6365,8 @@ CharacterJoint:
   m_EnableProjection: 0
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
-  m_BreakForce: 1000
-  m_BreakTorque: 1000
+  m_BreakForce: 2000
+  m_BreakTorque: 2000
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
   m_MassScale: 1
