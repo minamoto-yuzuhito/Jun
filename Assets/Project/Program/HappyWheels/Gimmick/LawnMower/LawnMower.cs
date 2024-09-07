@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static ToothController;
 
 /// <summary>
@@ -23,6 +24,10 @@ public class LawnMower : MonoBehaviour
     private float intervalOfCreateSuctionArea = 1.0f;
     private float coolTimeSeconds; // タイマー計測用
     private bool isCoolTime = false; // trueのときカウントダウンを行う
+
+    [SerializeField]
+    [Tooltip("吸い込みエリアの生成位置")]
+    private Transform suctionAreaPos;
 
     // 生成した吸い込みエリアを格納
     private List<GameObject> suctionAreas = new List<GameObject>();
@@ -46,7 +51,7 @@ public class LawnMower : MonoBehaviour
             {
                 // 吸い込みエリア生成
                 Vector3 pos = transform.position;
-                pos.y -= 5.0f;
+                pos.y = suctionAreaPos.position.y;
                 suctionAreas.Add(Instantiate(suctionArea, pos, Quaternion.identity));   // 格納
 
                 // クールタイム突入

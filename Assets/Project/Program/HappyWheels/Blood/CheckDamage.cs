@@ -87,7 +87,7 @@ public class CheckDamage : MonoBehaviour
 
             // 接続している身体パーツが存在しているとき
             // 身体パーツが芝刈り機で削除されていたら何もしない
-            if(bleedingLocation.name == BodyParts.None.ToString())
+            if(bleedingLocation.name != BodyParts.None.ToString())
             {
                 // 出血場所のゲームオブジェクトを取得
                 GameObject bleedingLocationParent = bleedingLocation.transform.GetChild((int)BleedingLocation).gameObject;
