@@ -19,7 +19,6 @@ public class PlayerLookat : MonoBehaviour
         plane.SetNormalAndPosition(Vector3.up, transform.localPosition);
         if (plane.Raycast(ray, out distance))
         {
-
             // 距離を元に交点を算出して、交点の方を向く
             var lookPoint = ray.GetPoint(distance);
             transform.LookAt(lookPoint);

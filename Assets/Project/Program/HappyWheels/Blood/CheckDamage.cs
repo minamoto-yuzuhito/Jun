@@ -82,10 +82,17 @@ public class CheckDamage : MonoBehaviour
         // このオブジェクトの接続先のオブジェクトから出血
         else
         {
-            // 出血場所のゲームオブジェクトを取得
+            // このオブジェクトの接続先の身体パーツを取得
             GameObject bleedingLocation = parent.transform.GetChild((int)BodyParts).gameObject;
-            GameObject bleedingLocationParent = bleedingLocation.transform.GetChild((int)BleedingLocation).gameObject;
-            IsBloodLoss(bleedingLocationParent);
+
+            // 接続している身体パーツが存在しているとき
+            // 身体パーツが芝刈り機で削除されていたら何もしない
+            if(bleedingLocation.name == BodyParts.None.ToString())
+            {
+                // 出血場所のゲームオブジェクトを取得
+                GameObject bleedingLocationParent = bleedingLocation.transform.GetChild((int)BleedingLocation).gameObject;
+                IsBloodLoss(bleedingLocationParent);
+            }
         }
     }
 

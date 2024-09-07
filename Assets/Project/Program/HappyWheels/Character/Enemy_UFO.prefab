@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3019242209282388362}
   - component: {fileID: 244774964702141605}
   - component: {fileID: 5946579335004305646}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: RightGun_Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,9 @@ GameObject:
   - component: {fileID: 371113297632144545}
   - component: {fileID: 3641633117498155780}
   - component: {fileID: 1543988444585678798}
-  m_Layer: 0
+  - component: {fileID: 4806016651337588055}
+  - component: {fileID: 2040887159775908640}
+  m_Layer: 13
   m_Name: Enemy_UFO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,6 +174,47 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4806016651337588055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039668780847461915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e96b447e8aaf5046b550f55261e9082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parachute: {fileID: 8567310307863705676, guid: 81f30dfdd3f75954e97011ee0fbb8454, type: 3}
+  human: {fileID: 680216368393657458, guid: bb474fe2ea8da73408567b60e092b8e0, type: 3}
+--- !u!54 &2040887159775908640
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039668780847461915}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3177408823891947707
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,7 +227,7 @@ GameObject:
   - component: {fileID: 609101199106805581}
   - component: {fileID: 6273666900576858196}
   - component: {fileID: 2293693897880198690}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +332,7 @@ GameObject:
   - component: {fileID: 1757763739101573047}
   - component: {fileID: 6500656476702122504}
   - component: {fileID: 4643588203721102515}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: LeftGun_Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -373,7 +416,7 @@ GameObject:
   - component: {fileID: 805340251962442407}
   - component: {fileID: 3283458512502639584}
   - component: {fileID: 793109421263516441}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: RightGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -456,7 +499,7 @@ GameObject:
   - component: {fileID: 2335615517364452926}
   - component: {fileID: 2962118112266533983}
   - component: {fileID: 2404777859967760639}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BottomGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -539,7 +582,7 @@ GameObject:
   - component: {fileID: 4669948651678066618}
   - component: {fileID: 7320369975434488241}
   - component: {fileID: 4134349625374197708}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BottomGun_Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -623,7 +666,7 @@ GameObject:
   - component: {fileID: 3032468839646884884}
   - component: {fileID: 2009309065287065273}
   - component: {fileID: 6256335631991361018}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: LeftGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}

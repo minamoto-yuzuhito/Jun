@@ -1,18 +1,88 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
+using Cinemachine;
 
+/// <summary>
+/// ãÛíÜïÇóVà⁄ìÆ
+/// </summary>
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField]
+    [Tooltip("CinemachineVirtualCamera")]
+    private CinemachineVirtualCamera suctionVirtualCamera;
+
+    private const float G = 9.9f;
+
+    Rigidbody rb;
+
+    // Use this for initialization
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// à⁄ìÆ
+    /// </summary>
+    public void IsMove()
     {
-        
+        // ÉJÉÅÉâÇå©â∫ÇÎÇµéãì_Ç…ê›íË
+        suctionVirtualCamera.enabled = false;
+
+        // à íuYÇæÇØå≈íË
+        rb.constraints = RigidbodyConstraints.FreezePositionY;
+
+        //--- à⁄ìÆ ---//
+        //var velocity = new Vector3(0, 0, 0);
+        //velocity.x += Input.GetAxis("Horizontal");
+        //velocity.z += Input.GetAxis("Vertical");
+        //rb.velocity = velocity * 500 * Time.deltaTime;
+
+        var hori = Input.GetAxis("Horizontal");
+        var vert = Input.GetAxis("Vertical");
+
+        rb.velocity = new Vector3(hori, 0, vert) * 10;
+
+        //--- à⁄ìÆï˚å¸Ç…è≠ÇµåXÇØÇÈ ---//
+        var zEular = 0.0f;
+        if (rb.velocity.x > 0)
+        {
+            zEular = -5.0f;
+        }
+        else if (rb.velocity.x < 0)
+        {
+            zEular = 5.0f;
+        }
+
+        var xEular = 0.0f;
+        if (rb.velocity.z > 0)
+        {
+            xEular = 5.0f;
+        }
+        else if (rb.velocity.z < 0)
+        {
+            xEular = -5.0f;
+        }
+        var eular = new Vector3(xEular, 0, zEular);
+        //rb.rotation = Quaternion.Euler(eular);
+    }
+
+    /// <summary>
+    /// í‚é~
+    /// </summary>
+    public void IsStop()
+    {
+        // â°Ç©ÇÁå©ÇÈ
+        suctionVirtualCamera.enabled = true;
+
+        // ë¨ìx
+        var velocity = new Vector3(0, 0, 0);
+        rb.velocity = velocity * Time.deltaTime;
+
+        // äpìx
+        rb.rotation = Quaternion.identity;
+
+        // âÒì]ÅAà íuÇ∆Ç‡Ç…å≈íË
+        rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 }

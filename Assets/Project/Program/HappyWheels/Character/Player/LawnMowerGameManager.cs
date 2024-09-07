@@ -9,8 +9,8 @@ public class LawnMowerGameManager : MonoBehaviour
     private LawnMower lawnMower;
 
     [SerializeField]
-    [Tooltip("FlyingObjectクラス")]
-    private FlyingObject flyingObject;
+    [Tooltip("PlayerControllerクラス")]
+    private PlayerController playerController;
 
     // Start is called before the first frame update
     void Start()
@@ -18,21 +18,20 @@ public class LawnMowerGameManager : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         // 左クリックしているとき
         // 芝刈り機に向かってくる吸い込みエリアを生成
         if (lawnMower.IsCreateSuctionArea())
         {
             // 停止
-            flyingObject.IsStop();
+            playerController.IsStop();
         }
         // 左クリックしていないとき
         else
         {
             // 移動
-            flyingObject.IsMove();
+            playerController.IsMove();
         }
     }
 }
