@@ -25,13 +25,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 176843708819730376}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3007059, y: -0, z: -0, w: -0.953717}
-  m_LocalPosition: {x: 0, y: 0.08, z: 0}
-  m_LocalScale: {x: 0.12, y: 0.08, z: 0.12}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.05, z: 0.02}
+  m_LocalScale: {x: 0.12, y: 0.1, z: 0.12}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5929604204071585129}
-  m_LocalEulerAnglesHint: {x: 325, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &3588197502466946880
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -720,8 +720,8 @@ Transform:
   m_GameObject: {fileID: 8068414732036068416}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.19, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.22, z: 0.17}
+  m_LocalPosition: {x: 0, y: 0.215, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.17}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5696721518891451334}
@@ -1117,7 +1117,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!144 &2860328216336720381
 CharacterJoint:
@@ -1398,7 +1398,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!144 &7239666663099035270
 CharacterJoint:
@@ -1626,7 +1626,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!144 &4333546340892538625
 CharacterJoint:
@@ -1844,7 +1844,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!144 &1629050268843569971
 CharacterJoint:
@@ -2376,7 +2376,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!144 &3986760290516683388
 CharacterJoint:
@@ -2904,7 +2904,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!144 &8294658959939013083
 CharacterJoint:
@@ -3126,7 +3126,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!144 &9190830759837268447
 CharacterJoint:
@@ -3535,7 +3535,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!144 &1570366516506079957
 CharacterJoint:
@@ -3700,6 +3700,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fec9a58e4e6076f42b21d05520d32fdf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3555413692412607394}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fec9a58e4e6076f42b21d05520d32fdf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1428297072042062558}
   m_SourcePrefab: {fileID: 100100000, guid: fec9a58e4e6076f42b21d05520d32fdf, type: 3}
 --- !u!1 &4919341077534153084 stripped
 GameObject:
@@ -3752,7 +3755,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!114 &3555413692412607394
 MonoBehaviour:
@@ -3767,6 +3770,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
+--- !u!114 &1428297072042062558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4919341077534153084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ab07f8c45782a47abf01f842a77509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  suctionVirtualCamera: {fileID: 0}
 --- !u!4 &5696721518891451334 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fec9a58e4e6076f42b21d05520d32fdf, type: 3}
@@ -3971,7 +3987,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!144 &4858882037554271600
 CharacterJoint:
@@ -4251,7 +4267,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!144 &5195858987863291981
 CharacterJoint:
@@ -4475,7 +4491,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!144 &4055159871949399258
 CharacterJoint:
@@ -4706,7 +4722,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!144 &6248524023335386457
 CharacterJoint:
@@ -5052,7 +5068,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!144 &2976775697932055108
 CharacterJoint:
@@ -5646,7 +5662,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!144 &3230982838372975651
 CharacterJoint:

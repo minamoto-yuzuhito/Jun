@@ -28,6 +28,7 @@ TagManager:
   - PullBehindTheLawnMower
   - InhaleZone
   - Bullet
+  - Wall
   layers:
   - Default
   - TransparentFX

@@ -17,4 +17,13 @@ public class Bullet : MonoBehaviour
         // ’e‚ÌˆÚ“®
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        // •Ç‚É“–‚½‚Á‚½Žž
+        if (other.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
