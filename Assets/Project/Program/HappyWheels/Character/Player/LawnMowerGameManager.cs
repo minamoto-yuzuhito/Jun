@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class LawnMowerGameManager : MonoBehaviour
 {
-    [SerializeField]
-    [Tooltip("LawnMowerクラス")]
-    private LawnMower lawnMower;
+    //[SerializeField]
+    //[Tooltip("LawnMowerクラス")]
+    //private LawnMower lawnMower;
 
     [SerializeField]
     [Tooltip("PlayerControllerクラス")]
@@ -22,16 +22,19 @@ public class LawnMowerGameManager : MonoBehaviour
     {
         // 左クリックしているとき
         // 芝刈り機に向かってくる吸い込みエリアを生成
-        if (lawnMower.IsCreateSuctionArea())
-        {
-            // 停止
-            playerController.IsStop();
-        }
-        // 左クリックしていないとき
-        else
-        {
-            // 移動
-            playerController.IsMove();
-        }
+        //if (lawnMower.IsCreateSuctionArea())
+        //{
+        //    // 停止
+        //    playerController.IsStop();
+        //}
+        //// 左クリックしていないとき
+        //else
+        //{
+        //    // 移動
+        //    playerController.IsMove();
+        //}
+
+        // 移動
+        playerController.IsMove();
     }
 }
