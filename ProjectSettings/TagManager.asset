@@ -29,6 +29,7 @@ TagManager:
   - InhaleZone
   - Bullet
   - Wall
+  - Ground
   layers:
   - Default
   - TransparentFX

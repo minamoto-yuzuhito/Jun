@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using Cinemachine;
+using Unity.VisualScripting;
 
 /// <summary>
 /// 空中浮遊移動
@@ -8,10 +9,17 @@ using Cinemachine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    [Tooltip("CinemachineVirtualCamera")]
-    private CinemachineVirtualCamera suctionVirtualCamera;
+    [Tooltip("RightHand")]
+    private Rigidbody rightHand;
+    
+    [SerializeField]
+    [Tooltip("LeftHand")]
+    private Rigidbody leftHand;
 
     Rigidbody rb;
+
+    private float hori;
+    private float vert;
 
     // Use this for initialization
     void Start()
@@ -20,49 +28,49 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// 移動
+    /// 移動の入力
     /// </summary>
+    public void IsMoveInput()
+    {
+        hori = Input.GetAxis("Horizontal");
+        vert = Input.GetAxis("Vertical");
+    }
+
     public void IsMove()
     {
-        // カメラを見下ろし視点に設定
-        suctionVirtualCamera.enabled = false;
-
-        // 位置Yだけ固定
-        //rb.constraints = RigidbodyConstraints.FreezePositionY;
-
-        //--- 移動 ---//
-        //var velocity = new Vector3(0, 0, 0);
-        //velocity.x += Input.GetAxis("Horizontal");
-        //velocity.z += Input.GetAxis("Vertical");
-        //rb.velocity = velocity * 500 * Time.deltaTime;
-
-        var hori = Input.GetAxis("Horizontal");
-        var vert = Input.GetAxis("Vertical");
-
         rb.velocity = new Vector3(hori, 0, vert) * 10;
+    }
 
-        ////--- 移動方向に少し傾ける ---//
-        //var zEular = 0.0f;
-        //if (rb.velocity.x > 0)
-        //{
-        //    zEular = -5.0f;
-        //}
-        //else if (rb.velocity.x < 0)
-        //{
-        //    zEular = 5.0f;
-        //}
-        //
-        //var xEular = 0.0f;
-        //if (rb.velocity.z > 0)
-        //{
-        //    xEular = 5.0f;
-        //}
-        //else if (rb.velocity.z < 0)
-        //{
-        //    xEular = -5.0f;
-        //}
-        //var eular = new Vector3(xEular, 0, zEular);
-        //rb.rotation = Quaternion.Euler(eular);
+    // 掴む
+    public void IsGrapple()
+    {
+        // 左クリックされた瞬間
+        if (Input.GetMouseButtonDown(0))
+        {
+            // 移動しない設定
+            leftHand.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+        }
+        
+        // 左クリックを離したとき
+        else if (Input.GetMouseButtonUp(0))
+        {
+            // 位置 Y だけ固定
+            leftHand.constraints = RigidbodyConstraints.FreezePositionY;
+        }
+
+        // 右クリックされた瞬間
+        if (Input.GetMouseButtonDown(1))
+        {
+            // 移動しない設定
+            rightHand.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+        }
+        
+        // 右クリックを離したとき
+        else if (Input.GetMouseButtonUp(1))
+        {
+            // 位置 Y だけ固定
+            rightHand.constraints = RigidbodyConstraints.FreezePositionY;
+        }
     }
 
     /// <summary>
@@ -70,9 +78,6 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void IsStop()
     {
-        // 横から見る
-        suctionVirtualCamera.enabled = true;
-
         // 速度
         var velocity = new Vector3(0, 0, 0);
         rb.velocity = velocity * Time.deltaTime;
