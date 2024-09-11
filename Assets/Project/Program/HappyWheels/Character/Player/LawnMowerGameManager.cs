@@ -18,6 +18,15 @@ public class LawnMowerGameManager : MonoBehaviour
         
     }
 
+    // Inputの入力はFixedUpdateではなくUpdateで行う
+    private void Update()
+    {
+        // 移動の入力
+        playerController.IsMoveInput();
+        // 手で掴む
+        playerController.IsGrapple();
+    }
+
     /// <summary>
     /// Rigidbodyを使用する移動はFixedUpdateで行う
     /// </summary>
@@ -39,14 +48,5 @@ public class LawnMowerGameManager : MonoBehaviour
 
         // 移動
         playerController.IsMove();
-    }
-
-    // Inputの入力はFixedUpdateではなくUpdateで行う
-    private void Update()
-    {
-        // 移動の入力
-        playerController.IsMoveInput();
-        // 手で掴む
-        playerController.IsGrapple();
     }
 }
