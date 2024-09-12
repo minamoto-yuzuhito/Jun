@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         // 左クリックされた瞬間
         if (Input.GetMouseButtonDown(0))
         {
-            // 移動しない設定
+            // 左手をその場で固定
             leftHand.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
         }
         
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
         // 右クリックされた瞬間
         if (Input.GetMouseButtonDown(1))
         {
-            // 移動しない設定
+            // 右手をその場で固定
             rightHand.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
         }
         

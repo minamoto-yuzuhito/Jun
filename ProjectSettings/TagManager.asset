@@ -43,9 +43,9 @@ TagManager:
   - Cannon
   - Player
   - SuctionArea
-  - 
+  - PlayerInternal
   - Enemy
-  - 
+  - PlayerExternal
   - 
   - 
   - 

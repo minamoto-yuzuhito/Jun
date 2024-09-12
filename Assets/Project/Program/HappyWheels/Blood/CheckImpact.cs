@@ -15,34 +15,34 @@ public class CheckImpact : MonoBehaviour
     /// <param name="collision"></param>
     void OnCollisionEnter(Collision collision)
     {
-        //Debug.Log(transform.tag + "：" + collision.impulse.magnitude);
+        Debug.Log(transform.tag + "：" + collision.impulse.magnitude);
 
-        //// 強い衝撃を受けたとき
-        //if (collision.impulse.magnitude > 40)
-        //{
-        //    // 衝撃を受けた位置に肉片を生成
-        //    for (int i = 0; i < 7; i++)
-        //    {
-        //        Instantiate(pieceOfMeat, transform.position, Quaternion.identity);
-        //    }
+        // 強い衝撃を受けたとき
+        if (collision.impulse.magnitude > 40)
+        {
+            // 衝撃を受けた位置に肉片を生成
+            for (int i = 0; i < 7; i++)
+            {
+                Instantiate(pieceOfMeat, transform.position, Quaternion.identity);
+            }
 
-        //    // 身体パーツの親オブジェクト
-        //    Transform human = transform.parent;
-        //    // 身体パーツ（頭や腕などのこと）
-        //    Transform parts = transform;
-        //    string partsName = BodyParts.None.ToString();
+            // 身体パーツの親オブジェクト
+            Transform human = transform.parent;
+            // 身体パーツ（頭や腕などのこと）
+            Transform parts = transform;
+            string partsName = BodyParts.None.ToString();
 
-        //    GameObject obj = new GameObject(partsName);
-        //    obj.transform.parent = human;
+            GameObject obj = new GameObject(partsName);
+            obj.transform.parent = human;
 
-        //    // Hierarchyでの順番を取得
-        //    int siblingIndex = parts.transform.GetSiblingIndex();
+            // Hierarchyでの順番を取得
+            int siblingIndex = parts.transform.GetSiblingIndex();
 
-        //    // 順番を入れ替える
-        //    obj.transform.SetSiblingIndex(siblingIndex);
+            // 順番を入れ替える
+            obj.transform.SetSiblingIndex(siblingIndex);
 
-        //    // 衝撃を受けた体の部位を削除
-        //    Destroy(parts.gameObject);
-        //}
+            // 衝撃を受けた体の部位を削除
+            Destroy(parts.gameObject);
+        }
     }
 }
