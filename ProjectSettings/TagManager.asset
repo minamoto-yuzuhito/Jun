@@ -46,8 +46,8 @@ TagManager:
   - PlayerInternal
   - Enemy
   - PlayerExternal
-  - 
-  - 
+  - SoccerBall
+  - SoccerPlayerSensor
   - 
   - 
   - 

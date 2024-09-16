@@ -471,7 +471,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6532072339742288776
 Transform:
   m_ObjectHideFlags: 0
@@ -581,7 +581,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38ab07f8c45782a47abf01f842a77509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  suctionVirtualCamera: {fileID: 0}
+  grabPoint: {fileID: 0}
+  rightHand: {fileID: 0}
+  leftHand: {fileID: 0}
 --- !u!114 &4141566486038182751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -799,6 +801,7 @@ MonoBehaviour:
   pullBehindTheLawnMower: {fileID: 6063400067944665145, guid: 37454082a7d3299428b0a44a159ea946, type: 3}
   suctionArea: {fileID: 3505938634621213236, guid: 54cf83240c0c02f4d8625f02753fd3ec, type: 3}
   intervalOfCreateSuctionArea: 1
+  suctionAreaPos: {fileID: 0}
 --- !u!1 &6739035063094778792
 GameObject:
   m_ObjectHideFlags: 0

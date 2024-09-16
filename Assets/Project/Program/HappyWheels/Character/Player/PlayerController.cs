@@ -2,12 +2,17 @@ using UnityEngine;
 using System.Collections;
 using Cinemachine;
 using Unity.VisualScripting;
+using UnityEngine.UIElements;
 
 /// <summary>
 /// 空中浮遊移動
 /// </summary>
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    [Tooltip("GrabPoint")]
+    private GameObject grabPoint;
+
     [SerializeField]
     [Tooltip("RightHand")]
     private Rigidbody rightHand;
@@ -16,10 +21,16 @@ public class PlayerController : MonoBehaviour
     [Tooltip("LeftHand")]
     private Rigidbody leftHand;
 
+    [SerializeField]
+    [Tooltip("Chest")]
+    private Rigidbody chest;
+
     Rigidbody rb;
 
     private float hori;
     private float vert;
+
+    private GameObject grabPointObject;
 
     // Use this for initialization
     void Start()
@@ -48,29 +59,58 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             // 左手をその場で固定
-            leftHand.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+            //leftHand.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+
+            IsRotation(leftHand.gameObject);
         }
         
         // 左クリックを離したとき
         else if (Input.GetMouseButtonUp(0))
         {
-            // 位置 Y だけ固定
-            leftHand.constraints = RigidbodyConstraints.FreezePositionY;
+            if(grabPointObject != null)
+            {
+                // 親子関係を解除
+                leftHand.transform.parent.parent = null;
+
+                // 削除
+                Destroy(grabPointObject);
+            }
         }
 
         // 右クリックされた瞬間
         if (Input.GetMouseButtonDown(1))
         {
-            // 右手をその場で固定
-            rightHand.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+            IsRotation(rightHand.gameObject);
         }
         
         // 右クリックを離したとき
         else if (Input.GetMouseButtonUp(1))
         {
-            // 位置 Y だけ固定
-            rightHand.constraints = RigidbodyConstraints.FreezePositionY;
+            if (grabPointObject != null)
+            {
+                // 親子関係を解除
+                rightHand.transform.parent.parent = null;
+
+                // 削除
+                Destroy(grabPointObject);
+            }
         }
+    }
+
+    void IsRotation(GameObject HandObject)
+    {
+        grabPointObject = Instantiate(grabPoint, HandObject.transform.position, Quaternion.identity);
+
+        if(HandObject == leftHand.gameObject)
+        {
+            grabPointObject.GetComponent<Rotation>().IsRotateLeft();
+        }
+        else if (HandObject == rightHand.gameObject)
+        {
+            grabPointObject.GetComponent<Rotation>().IsRotateRight();
+        }
+
+        HandObject.transform.parent.parent = grabPointObject.transform;
     }
 
     /// <summary>
