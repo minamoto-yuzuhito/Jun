@@ -1,20 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SoccerBall : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField]
+    [Tooltip("TableSoccerController")]
+    private TableSoccerController tableSoccerController;
 
     /// <summary>
     /// プレイヤーのセンサーに触れたとき
@@ -23,8 +16,8 @@ public class SoccerBall : MonoBehaviour
     /// <param name="other"></param>
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("すり抜けた！");
+        GameObject obj = other.gameObject.GetComponent<SoccerPlayerSensor>().GetOperationObject();
 
-
+        tableSoccerController.SetOperationObject(obj);
     }
 }

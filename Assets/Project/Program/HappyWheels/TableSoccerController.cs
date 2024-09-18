@@ -8,6 +8,7 @@ public class TableSoccerController : MonoBehaviour
     [SerializeField]
     [Tooltip("操作するオブジェクト")]
     private GameObject operationObject;
+    public void SetOperationObject(GameObject obj) { operationObject = obj; }
 
     // 座標用の変数
     Vector3 mousePos, worldPos;
@@ -39,6 +40,6 @@ public class TableSoccerController : MonoBehaviour
 
         // X,Y,Z軸に対してそれぞれ、指定した角度ずつ回転させている。
         // deltaTimeをかけることで、フレームごとではなく、1秒ごとに回転するようにしている。
-        operationObject.transform.Rotate(new Vector3(0, -mouse_move_y, 0) * Time.deltaTime);
+        operationObject.transform.Rotate(new Vector3(-mouse_move_y, 0, 0) * Time.deltaTime);
     }
 }
