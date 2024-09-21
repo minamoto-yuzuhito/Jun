@@ -10,36 +10,48 @@ public class TableSoccerController : MonoBehaviour
     private GameObject operationObject;
     public void SetOperationObject(GameObject obj) { operationObject = obj; }
 
-    // 座標用の変数
-    Vector3 mousePos, worldPos;
+    [SerializeField]
+    [Tooltip("SoccerBal")]
+    private SoccerBal soccerBal;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    [Tooltip("マウス感度（移動）")]
+    private float moveSensitivity = 0.1f;
+
+    [SerializeField]
+    [Tooltip("マウス感度（回転）")]
+    private float rotateSensitivity = 500.0f;
 
     // Update is called once per frame
     void Update()
     {
+        float mouse_move_x = Input.GetAxis("Mouse X") * moveSensitivity;
+        float mouse_move_y = Input.GetAxis("Mouse Y") * rotateSensitivity;
+
         //--- 移動 ---//
-        // マウス座標の取得
-        mousePos = Input.mousePosition;
-        // スクリーン座標をワールド座標に変換
-        worldPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 10f));
-        // x座標だけ使用する
-        worldPos.y = operationObject.transform.position.y;
-        worldPos.z = operationObject.transform.position.z;
-        // 位置の更新
-        operationObject.transform.position = worldPos;
+        // 左クリックしているとき
+        if (Input.GetMouseButton(0))
+        {
+            // x座標だけ使用する
+            Vector3 pos = operationObject.transform.position;
+            pos.x += mouse_move_x;
+            // 位置の更新
+            operationObject.transform.position = pos;
+        }
 
         //--- 回転 ---//
-        float sensitivity = 500.0f; // いわゆるマウス感度
-        float mouse_move_x = Input.GetAxis("Mouse X") * sensitivity;
-        float mouse_move_y = Input.GetAxis("Mouse Y") * sensitivity;
+        // 右クリックしているとき
+        if (Input.GetMouseButton(1))
+        {
+            // X,Y,Z軸に対してそれぞれ、指定した角度ずつ回転させている。
+            // deltaTimeをかけることで、フレームごとではなく、1秒ごとに回転するようにしている。
+            operationObject.transform.Rotate(new Vector3(-mouse_move_y, 0, 0) * Time.deltaTime);
+        }
+    }
 
-        // X,Y,Z軸に対してそれぞれ、指定した角度ずつ回転させている。
-        // deltaTimeをかけることで、フレームごとではなく、1秒ごとに回転するようにしている。
-        operationObject.transform.Rotate(new Vector3(-mouse_move_y, 0, 0) * Time.deltaTime);
+    private void FixedUpdate()
+    {
+        // サッカーボールの操作
+        soccerBal.Acceleration();
     }
 }

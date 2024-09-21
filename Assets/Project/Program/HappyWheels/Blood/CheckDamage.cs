@@ -51,49 +51,13 @@ public class CheckDamage : MonoBehaviour
         OppositeSide = 1,   // 反対側
     }
 
-    // このスクリプトをアタッチしたゲームオブジェクトに関するもの
-    private BodyParts bodyPartsType;    // 身体パーツの種類
-    private GameObject parent;          // 親オブジェクト
+    [SerializeField]
+    [Tooltip("連動して出血する部位")]
+    private GameObject linkageBleeding;
 
     private void Start()
     {
-        // 1つ階層が上の親オブジェクトを取得
-        parent = transform.parent.gameObject;
-
-        // タグの文字列をenum型へ変換
-        bodyPartsType = (BodyParts)Enum.Parse(typeof(BodyParts), transform.tag);
-
         //Debug.Log(bodyPartsType);
-    }
-
-    // <summary>
-    // 指定されたオブジェクト（身体パーツのこと）から出血する
-    // </summary>
-    // <param name = "BodyParts" ></ param >
-    private void SetBleedingLocation(BodyParts BodyParts, BleedingLocation BleedingLocation)
-    {
-        // このオブジェクトから出血
-        if(BleedingLocation == BleedingLocation.Myself)
-        {
-            // 出血箇所のゲームオブジェクトを取得
-            GameObject bleedingLocation = transform.GetChild(0).gameObject;
-            IsBloodLoss(bleedingLocation);
-        }
-        // このオブジェクトの接続先のオブジェクトから出血
-        else
-        {
-            // このオブジェクトの接続先の身体パーツを取得
-            GameObject bleedingLocation = parent.transform.GetChild((int)BodyParts).gameObject;
-
-            // 接続している身体パーツが存在しているとき
-            // 身体パーツが芝刈り機で削除されていたら何もしない
-            if(bleedingLocation.name != BodyParts.None.ToString())
-            {
-                // 出血場所のゲームオブジェクトを取得
-                GameObject bleedingLocationParent = bleedingLocation.transform.GetChild((int)BleedingLocation).gameObject;
-                IsBloodLoss(bleedingLocationParent);
-            }
-        }
     }
 
     /// <summary>
@@ -105,51 +69,15 @@ public class CheckDamage : MonoBehaviour
         //parent.GetComponent<AudioSource>().Play();
 
         // このオブジェクトから出血
-        SetBleedingLocation(BodyParts.None, BleedingLocation.Myself);
+        // 出血箇所のゲームオブジェクトを取得
+        GameObject bleedingMySelf = transform.GetChild(0).gameObject;
+        IsBloodLoss(bleedingMySelf);
 
         // このオブジェクトの接続先のオブジェクトから出血
-        switch (bodyPartsType)
+        // 接続している身体パーツが存在していないときは出血しない
+        if (linkageBleeding.name != BodyParts.None.ToString())
         {
-            // 頭が外れたとき、胸上から出血
-            case BodyParts.Head: SetBleedingLocation(BodyParts.Chest, BleedingLocation.OnHead); break;
-
-            // 胸には元からこのスクリプトがアタッチされていないのでスルー
-            case BodyParts.Chest: break;
-
-            //--- 右肩～右手 ---//
-            // 右肩が外れたとき、胸右から出血
-            case BodyParts.RightShoulder: SetBleedingLocation(BodyParts.Chest, BleedingLocation.OnRightShoulder); break;
-            // 右腕が外れたとき、右肩から出血
-            case BodyParts.RightArm: SetBleedingLocation(BodyParts.RightShoulder, BleedingLocation.OppositeSide); break;
-            // 右手が外れたとき、右腕から出血
-            case BodyParts.RightHand: SetBleedingLocation(BodyParts.RightArm, BleedingLocation.OppositeSide); break;
-
-            //--- 左肩～左手 ---//
-            // 左肩が外れたとき、胸左から出血
-            case BodyParts.LeftShoulder: SetBleedingLocation(BodyParts.Chest, BleedingLocation.OnLeftShoulder); break;
-            // 左腕が外れたとき、左肩から出血
-            case BodyParts.LeftArm: SetBleedingLocation(BodyParts.LeftShoulder, BleedingLocation.OppositeSide); break;
-            // 左手が外れたとき、左腕から出血
-            case BodyParts.LeftHand: SetBleedingLocation(BodyParts.LeftArm, BleedingLocation.OppositeSide); break;
-
-            // 腰が外れたとき、胸下から出血
-            case BodyParts.Waist: SetBleedingLocation(BodyParts.Chest, BleedingLocation.OnWaist); break;
-
-            //--- 右太もも～右つま先 ---//
-            // 右太ももが外れたとき、腰右から出血
-            case BodyParts.RightThigh: SetBleedingLocation(BodyParts.Waist, BleedingLocation.OnRightThigh); break;
-            // 右すねが外れたとき、右太ももから出血
-            case BodyParts.RightShin: SetBleedingLocation(BodyParts.RightThigh, BleedingLocation.OppositeSide); break;
-            // 右つま先が外れたとき、右すねから出血
-            case BodyParts.RightFoot: SetBleedingLocation(BodyParts.RightShin, BleedingLocation.OppositeSide); break;
-
-            //--- 左太もも～左つま先 ---//
-            // 左太ももが外れたとき、腰左から出血
-            case BodyParts.LeftThigh: SetBleedingLocation(BodyParts.Waist, BleedingLocation.OnLeftThigh); break;
-            // 左すねが外れたとき、左太ももから出血
-            case BodyParts.LeftShin: SetBleedingLocation(BodyParts.LeftThigh, BleedingLocation.OppositeSide); break;
-            // 左つま先が外れたとき、左すねから出血
-            case BodyParts.LeftFoot: SetBleedingLocation(BodyParts.LeftShin, BleedingLocation.OppositeSide); break;
+            IsBloodLoss(linkageBleeding);
         }
     }
 

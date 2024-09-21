@@ -12,6 +12,10 @@ public class LawnMowerGameManager : MonoBehaviour
     [Tooltip("PlayerControllerクラス")]
     private PlayerController playerController;
 
+    [SerializeField]
+    [Tooltip("SoccerBal")]
+    private SoccerBal soccerBal;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +50,10 @@ public class LawnMowerGameManager : MonoBehaviour
         //    playerController.IsMove();
         //}
 
-        // 移動
+        // プレイヤーの操作
         playerController.IsMove();
+
+        // サッカーボールの操作
+        soccerBal.Acceleration();
     }
 }

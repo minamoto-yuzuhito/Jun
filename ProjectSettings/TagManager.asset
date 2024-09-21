@@ -30,6 +30,7 @@ TagManager:
   - Bullet
   - Wall
   - Ground
+  - ReflectObject
   layers:
   - Default
   - TransparentFX
