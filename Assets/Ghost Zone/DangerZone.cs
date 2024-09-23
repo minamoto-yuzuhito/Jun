@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using TMPro;
 using UnityEngine;
 
@@ -10,11 +11,43 @@ public class DangerZone : MonoBehaviour
     [Tooltip("操作するオブジェクト")]
     private GameObject controlObject;
 
+    [SerializeField]
+    [Tooltip("サイズ")]
+    private GameObject size;
+
+    [SerializeField]
+    [Tooltip("true：天井")]
+    private bool isCeiling = false;
+
+    [SerializeField]
+    [Tooltip("サイズ変更にかかる時間")]
+    private float scaleTime = 1.0f;
+
+    private void Start()
+    {
+        if(isCeiling)
+        {
+            size = GameObject.FindWithTag("RoomSize");
+
+            Invoke("BootDangerZone", 5.0f);
+        }
+    }
+
+    private void BootDangerZone()
+    {
+        controlObject.transform.DOScaleY(size.transform.localScale.y, scaleTime).
+            SetEase(Ease.Linear);   // イージング設定
+    }
+
     /// <param name="other"></param>
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("触れた");
-        controlObject.transform.DOScaleY(transform.localScale.y, 1.0f).
-        SetEase(Ease.InOutQuart);   // イージング設定
+
+        if (!isCeiling)
+        {
+            // サイズ変更
+            BootDangerZone();
+        }
     }
 }

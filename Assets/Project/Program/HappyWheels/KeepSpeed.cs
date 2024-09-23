@@ -5,24 +5,36 @@ using UnityEngine;
 
 public class KeepSpeed : MonoBehaviour
 {
-    [SerializeField]
-    [Tooltip("PlayerController")]
     private PlayerController playerController;
+
+    private void Start()
+    {
+        playerController = GameObject.FindWithTag("Chest").GetComponent<PlayerController>();
+    }
 
     void OnCollisionStay(Collision collision)
     {
-        Debug.Log("当たっている");
-
-        playerController.InversionDirectionHori(-5);
-        playerController.InversionDirectionVert(-5
-            );
+        if (collision.transform.GetComponent<CheckImpact>() != null)
+        {
+            // プレイヤーが触れた時
+            if (collision.transform.GetComponent<CheckImpact>().GetObjectName() == "BodyParts")
+            {
+                playerController.InversionDirectionHori(-5);
+                playerController.InversionDirectionVert(-5);
+            }
+        }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        Debug.Log("離れた");
-
-        playerController.InversionDirectionHori(1);
-        playerController.InversionDirectionVert(1);
+        if (collision.transform.GetComponent<CheckImpact>() != null)
+        {
+            // プレイヤーが触れた時
+            if (collision.transform.GetComponent<CheckImpact>().GetObjectName() == "BodyParts")
+            {
+                playerController.InversionDirectionHori(1);
+                playerController.InversionDirectionVert(1);
+            }
+        }
     }
 }

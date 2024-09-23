@@ -48,8 +48,6 @@ public class PlayerController : MonoBehaviour
     {
         hori = Input.GetAxis("Horizontal");
         vert = Input.GetAxis("Vertical");
-
-        Jump();
     }
 
     public void IsMove()
@@ -143,37 +141,5 @@ public class PlayerController : MonoBehaviour
 
         // 回転、位置ともに固定
         rb.constraints = RigidbodyConstraints.FreezeAll;
-    }
-
-    private bool jumpNow;
-    public float jumpPower = 850.0f; //調整必要 例850
-
-    [SerializeField]
-    [Tooltip("プレイヤー")]
-    private Rigidbody playerRb;
-
-    private void OnCollisionEnter(Collision other)
-    {
-        if (jumpNow == true)
-        {
-            //if (other.gameObject.CompareTag("Ground"))
-            //{
-            //    jumpNow = false;
-            //}
-
-            jumpNow = false;
-        }
-    }
-
-    void Jump()
-    {
-        if (jumpNow == true) return;
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("ジャンプ");
-
-            playerRb.AddForce(-transform.forward * jumpPower, ForceMode.Impulse);
-            jumpNow = true;
-        }
     }
 }

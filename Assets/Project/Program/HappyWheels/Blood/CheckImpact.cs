@@ -29,23 +29,26 @@ public class CheckImpact : MonoBehaviour
                 Instantiate(pieceOfMeat, transform.position, Quaternion.identity);
             }
 
-            // 身体パーツの親オブジェクト
-            Transform human = transform.parent;
-            // 身体パーツ（頭や腕などのこと）
-            Transform parts = transform;
-            string partsName = BodyParts.None.ToString();
-
-            GameObject obj = new GameObject(partsName);
-            obj.transform.parent = human;
-
-            // Hierarchyでの順番を取得
-            int siblingIndex = parts.transform.GetSiblingIndex();
-
-            // 順番を入れ替える
-            obj.transform.SetSiblingIndex(siblingIndex);
-
             // 衝撃を受けた体の部位を削除
-            Destroy(parts.gameObject);
+            Destroy(gameObject);
+
+            //// 身体パーツの親オブジェクト
+            //Transform human = transform.parent;
+            //// 身体パーツ（頭や腕などのこと）
+            //Transform parts = transform;
+            //string partsName = BodyParts.None.ToString();
+
+            //GameObject obj = new GameObject(partsName);
+            //obj.transform.parent = human;
+
+            //// Hierarchyでの順番を取得
+            //int siblingIndex = parts.transform.GetSiblingIndex();
+
+            //// 順番を入れ替える
+            //obj.transform.SetSiblingIndex(siblingIndex);
+
+            //// 衝撃を受けた体の部位を削除
+            //Destroy(parts.gameObject);
         }
     }
 }

@@ -31,6 +31,9 @@ TagManager:
   - Wall
   - Ground
   - ReflectObject
+  - ClearRoomText
+  - GameManager
+  - RoomSize
   layers:
   - Default
   - TransparentFX
