@@ -9,6 +9,11 @@ public class CheckImpact : MonoBehaviour
     [Tooltip("肉片")]
     private GameObject pieceOfMeat;
 
+    [SerializeField]
+    [Tooltip("Dockingの識別用")]
+    private string objectName = "BodyParts";
+    public string GetObjectName() { return objectName; }    //ゲッター
+
     /// <summary>
     /// 身体のパーツが強い衝撃を受けたら肉片に置換する
     /// </summary>

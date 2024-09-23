@@ -3,6 +3,8 @@ using System.Collections;
 using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine.UIElements;
+using static UnityEngine.GridBrushBase;
+using static ToothController;
 
 /// <summary>
 /// 空中浮遊移動
@@ -21,14 +23,15 @@ public class PlayerController : MonoBehaviour
     [Tooltip("LeftHand")]
     private Rigidbody leftHand;
 
-    [SerializeField]
-    [Tooltip("Chest")]
-    private Rigidbody chest;
-
     Rigidbody rb;
 
     private float hori;
     private float vert;
+
+    private float directionHori = 1.0f;
+    public void InversionDirectionHori(float Value) { directionHori = Value; }
+    private float directionVert = 1.0f;
+    public void InversionDirectionVert(float Value) { directionVert = Value; }
 
     private GameObject grabPointObject;
 
@@ -45,11 +48,24 @@ public class PlayerController : MonoBehaviour
     {
         hori = Input.GetAxis("Horizontal");
         vert = Input.GetAxis("Vertical");
+
+        Jump();
     }
 
     public void IsMove()
     {
-        rb.velocity = new Vector3(hori, 0, vert) * 10;
+        Vector3 newVelocity = rb.velocity;
+        newVelocity.x = hori * 10 * directionHori;
+        newVelocity.z = vert * 10 * directionVert;
+
+        if(rb.velocity.y < -50.0f)
+        {
+            newVelocity.y = -50.0f;
+        }
+
+        rb.velocity = newVelocity;
+
+        //Debug.Log(rb.velocity);
     }
 
     // 掴む
@@ -127,5 +143,37 @@ public class PlayerController : MonoBehaviour
 
         // 回転、位置ともに固定
         rb.constraints = RigidbodyConstraints.FreezeAll;
+    }
+
+    private bool jumpNow;
+    public float jumpPower = 850.0f; //調整必要 例850
+
+    [SerializeField]
+    [Tooltip("プレイヤー")]
+    private Rigidbody playerRb;
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (jumpNow == true)
+        {
+            //if (other.gameObject.CompareTag("Ground"))
+            //{
+            //    jumpNow = false;
+            //}
+
+            jumpNow = false;
+        }
+    }
+
+    void Jump()
+    {
+        if (jumpNow == true) return;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("ジャンプ");
+
+            playerRb.AddForce(-transform.forward * jumpPower, ForceMode.Impulse);
+            jumpNow = true;
+        }
     }
 }
