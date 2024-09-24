@@ -23,6 +23,9 @@ public class CheckImpact : MonoBehaviour
         // 強い衝撃を受けたとき
         if (collision.impulse.magnitude > 40)
         {
+            // ダメージ音を流す
+            transform.parent.GetComponent<AudioSource>().Play();
+
             // 衝撃を受けた位置に肉片を生成
             for (int i = 0; i < 7; i++)
             {

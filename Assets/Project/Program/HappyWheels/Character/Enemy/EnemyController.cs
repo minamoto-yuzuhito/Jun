@@ -11,7 +11,11 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         enemyChestRb = GetComponent<Rigidbody>();
-        playerChestRb = GameObject.FindWithTag("Chest").GetComponent<Rigidbody>();
+
+        if (GameObject.FindWithTag("Chest").GetComponent<Rigidbody>() != null)
+        {
+            playerChestRb = GameObject.FindWithTag("Chest").GetComponent<Rigidbody>();
+        }
     }
 
     private void Update()
@@ -21,53 +25,57 @@ public class EnemyController : MonoBehaviour
 
     void GoToPlayer()
     {
-        Vector3 enemyChestPos = transform.position;
-        Vector3 playerChestPos = playerChestRb.transform.position;
-
-        Vector3 enemyChestVelocity = enemyChestRb.velocity;
-
-        // 右
-        if (enemyChestPos.x > playerChestPos.x)
+        // プレイヤーが存在しているとき
+        if (playerChestRb != null)
         {
-            enemyChestVelocity.x = -5;
-        }
-        // 左
-        else
-        {
-            enemyChestVelocity.x = 5;
-        }
+            Vector3 enemyChestPos = transform.position;
+            Vector3 playerChestPos = playerChestRb.transform.position;
 
-        // 同じ位置
-        if (enemyChestPos.y == playerChestPos.y)
-        {
-            if (enemyChestRb.velocity.y < -50.0f)
+            Vector3 enemyChestVelocity = enemyChestRb.velocity;
+
+            // 右
+            if (enemyChestPos.x > playerChestPos.x)
             {
-                enemyChestVelocity.y = -50.0f;
+                enemyChestVelocity.x = -5;
             }
-        }
-        // 上
-        else if (enemyChestPos.y > playerChestPos.y)
-        {
-            enemyChestVelocity.y += -5; // 下降
-        }
-        // 下
-        else
-        {
-            enemyChestVelocity.y += 10; // 上昇
-        }
+            // 左
+            else
+            {
+                enemyChestVelocity.x = 5;
+            }
 
-        // 奥
-        if (enemyChestPos.z > playerChestPos.z)
-        {
-            enemyChestVelocity.z = -5;
-        }
-        // 手前
-        else
-        {
-            enemyChestVelocity.z = 5;
-        }
+            // 同じ位置
+            if (enemyChestPos.y == playerChestPos.y)
+            {
+                if (enemyChestRb.velocity.y < -50.0f)
+                {
+                    enemyChestVelocity.y = -50.0f;
+                }
+            }
+            // 上
+            else if (enemyChestPos.y > playerChestPos.y)
+            {
+                enemyChestVelocity.y += -5; // 下降
+            }
+            // 下
+            else
+            {
+                enemyChestVelocity.y += 10; // 上昇
+            }
 
-        enemyChestRb.velocity = enemyChestVelocity;
+            // 奥
+            if (enemyChestPos.z > playerChestPos.z)
+            {
+                enemyChestVelocity.z = -5;
+            }
+            // 手前
+            else
+            {
+                enemyChestVelocity.z = 5;
+            }
+
+            enemyChestRb.velocity = enemyChestVelocity;
+        }
     }
 
     //[SerializeField]

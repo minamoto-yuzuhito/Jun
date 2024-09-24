@@ -6,34 +6,18 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static CheckDamage;
 
+/// <summary>
+/// 塔生成クラス
+/// </summary>
 public class TowerGenerator : MonoBehaviour
 {
-    //--- 塔 ---//
     [SerializeField]
     [Tooltip("TowerオブジェクトPrefab")]
     private GameObject towerPrefab;
+
     [SerializeField]
     [Tooltip("新しいTowerオブジェクトの生成位置（DangerZoneオブジェクトを指定）")]
     private Transform towerGeneratePos;
-
-    //--- 障害物 ---//
-    [SerializeField]
-    [Tooltip("障害物オブジェクトPrefab")]
-    private GameObject obstaclesPrefab;
-    [SerializeField]
-    [Tooltip("障害物の生成位置")]
-    private GameObject obstaclesGeneratePos;
-    [SerializeField]
-    [Tooltip("障害物の親")]
-    private GameObject obstaclesParentObject;
-
-    //--- Enemy ---//
-    [SerializeField]
-    [Tooltip("敵オブジェクトPrefab")]
-    private GameObject enemyPrefab;
-    [SerializeField]
-    [Tooltip("敵の生成位置")]
-    private GameObject enemyGeneratePos;
 
     // RagdollDivingGameManager
     private RagdollDivingGameManager ragdollDivingGameManager;
@@ -46,7 +30,7 @@ public class TowerGenerator : MonoBehaviour
         ragdollDivingGameManager = GameObject.FindWithTag("GameManager").GetComponent<RagdollDivingGameManager>();
 
         // 障害物を生成
-        GenerateObstacles();
+        GetComponent<ObstaclesGenerator>().GenerateObstacles();
     }
 
     void OnTriggerEnter(Collider other)
@@ -63,7 +47,7 @@ public class TowerGenerator : MonoBehaviour
                     GenerateTower();
 
                     // 敵を生成
-                    GenerateEnemy();
+                    GetComponent<EnemyGenerator>().GenerateEnemy();
                 }
             }
         }
@@ -83,29 +67,6 @@ public class TowerGenerator : MonoBehaviour
             // 新しい部屋を生成
             Instantiate(towerPrefab, towerGeneratePos.position, Quaternion.identity);
             isTowergenerate = true;
-        }
-    }
-
-    /// <summary>
-    /// 障害物を生成
-    /// </summary>
-    void GenerateObstacles()
-    {
-        // 指定の位置に生成
-        GameObject obj = Instantiate(obstaclesPrefab, obstaclesGeneratePos.transform.position, Quaternion.identity);
-        obj.transform.parent = obstaclesParentObject.transform;
-    }
-
-    /// <summary>
-    /// 敵を生成
-    /// </summary>
-    void GenerateEnemy()
-    {
-        // 敵が存在していないとき
-        if(!GameObject.FindWithTag("Enemy"))
-        {
-            // 指定の位置に生成
-            Instantiate(enemyPrefab, enemyGeneratePos.transform.position, Quaternion.identity);
         }
     }
 }

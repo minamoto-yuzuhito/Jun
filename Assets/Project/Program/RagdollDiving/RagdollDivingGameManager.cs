@@ -9,6 +9,7 @@ public class RagdollDivingGameManager : MonoBehaviour
     [SerializeField]
     [Tooltip("PlayerControllerクラス")]
     private PlayerController playerController;
+    public void InitPlayerController() { playerController = null; }
 
     [SerializeField]
     [Tooltip("現在の階層を表示するText型の変数")]
@@ -32,7 +33,7 @@ public class RagdollDivingGameManager : MonoBehaviour
     public void SetClearRoomText()
     {
         clearRoomNum++;
-        clearRoomText.text = "Clear:" + clearRoomNum;
+        clearRoomText.text = "Score:" + clearRoomNum;
     }
 
     // 突破した数
@@ -40,7 +41,11 @@ public class RagdollDivingGameManager : MonoBehaviour
     public int GetClearRoomNum() { return clearRoomNum; }   // ゲッター
     public void CountClearRoomNum() { clearRoomNum++; }   // 1カウントする
 
+    // ゲームオーバー判定
     private bool isGameOver;
+    /// <summary>
+    /// ゲームオーバー時に実行される
+    /// </summary>
     public void IsGameOver()
     {
         isGameOver = true;
@@ -70,8 +75,11 @@ public class RagdollDivingGameManager : MonoBehaviour
             return;
         }
 
-        // キー入力を受け付ける
-        playerController.IsMoveInput();
+        if (playerController != null)
+        {
+            // キー入力を受け付ける
+            playerController.IsMoveInput();
+        }
     }
 
     /// <summary>
@@ -85,7 +93,10 @@ public class RagdollDivingGameManager : MonoBehaviour
             return;
         }
 
-        // プレイヤーの操作
-        playerController.IsMove();
+        if (playerController != null)
+        {
+            // プレイヤーの操作
+            playerController.IsMove();
+        }
     }
 }

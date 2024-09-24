@@ -66,7 +66,7 @@ public class CheckDamage : MonoBehaviour
     void OnJointBreak(float breakForce)
     {
         // ダメージ音を流す
-        //parent.GetComponent<AudioSource>().Play();
+        transform.parent.GetComponent<AudioSource>().Play();
 
         // このオブジェクトから出血
         // 出血箇所のゲームオブジェクトを取得
