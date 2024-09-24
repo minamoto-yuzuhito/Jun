@@ -26,7 +26,23 @@ public class CheckImpact : MonoBehaviour
             // 衝撃を受けた位置に肉片を生成
             for (int i = 0; i < 7; i++)
             {
-                Instantiate(pieceOfMeat, transform.position, Quaternion.identity);
+                Instantiate(pieceOfMeat, transform.position, Quaternion.identity, transform.parent);
+            }
+
+            // 指定の部位が破壊された時
+            if (transform.CompareTag("Head") ||
+                transform.CompareTag("Chest") ||
+                transform.CompareTag("Waist"))
+            {
+                if (transform.parent.CompareTag("Player"))
+                {
+                    // ゲームオーバー
+                    GameObject.FindWithTag("GameManager").GetComponent<RagdollDivingGameManager>().IsGameOver();
+                }
+                else if (transform.parent.CompareTag("Enemy"))
+                {
+                    transform.parent.GetComponent<EnemyDestroy>().MyDestroy();
+                }
             }
 
             // 衝撃を受けた体の部位を削除

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &393740123288732303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1494474007939304585}
+  m_Layer: 0
+  m_Name: TowerGeneratePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1494474007939304585
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393740123288732303}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2930636516477268803}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &567881688738753515
 GameObject:
   m_ObjectHideFlags: 0
@@ -26,6 +57,37 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2930636516477268803}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &853947906652710849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6553621164106313768}
+  m_Layer: 0
+  m_Name: EnemyGeneratePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6553621164106313768
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853947906652710849}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -290,7 +352,9 @@ Transform:
   m_Children:
   - {fileID: 136334979913597157}
   - {fileID: 5556447709453518259}
+  - {fileID: 1494474007939304585}
   - {fileID: 590417227310030198}
+  - {fileID: 6553621164106313768}
   - {fileID: 5045234347149614670}
   - {fileID: 2318933979946429424}
   m_Father: {fileID: 0}
@@ -308,7 +372,6 @@ GameObject:
   - component: {fileID: 3462778073712850656}
   - component: {fileID: 7542864050557044746}
   - component: {fileID: 2367330101536689570}
-  - component: {fileID: 716278860299566096}
   m_Layer: 0
   m_Name: Generator
   m_TagString: Untagged
@@ -414,23 +477,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61369f6493fbf324daa8224734f91229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newTowerPos: {fileID: 5045234347149614670}
   towerPrefab: {fileID: 7477542455932841421}
---- !u!114 &716278860299566096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8736174596281614862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2fc04b1544df2941bbe6415853dfcfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 7473782630461399996, guid: 65d711f76c503264f89054d7e7063875, type: 3}
-  generatePos: {fileID: 567881688738753515}
-  parentObject: {fileID: 7477542455932841421}
+  towerGeneratePos: {fileID: 1494474007939304585}
+  obstaclesPrefab: {fileID: 7473782630461399996, guid: 65d711f76c503264f89054d7e7063875, type: 3}
+  obstaclesGeneratePos: {fileID: 567881688738753515}
+  obstaclesParentObject: {fileID: 7477542455932841421}
+  enemyPrefab: {fileID: 2369708058923187096, guid: 4c50d2697a6bb9443809a3cdf1de64df, type: 3}
+  enemyGeneratePos: {fileID: 853947906652710849}
 --- !u!1 &8770592135936878002
 GameObject:
   m_ObjectHideFlags: 0

@@ -48,12 +48,12 @@ public class EnemyController : MonoBehaviour
         // è„
         else if (enemyChestPos.y > playerChestPos.y)
         {
-            enemyChestVelocity.y += -5;
+            enemyChestVelocity.y += -5; // â∫ç~
         }
         // â∫
         else
         {
-            enemyChestVelocity.y += 5;
+            enemyChestVelocity.y += 10; // è„è∏
         }
 
         // âú

@@ -12,7 +12,7 @@ public class BloodLost : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Instantiate(blood, transform.position, Quaternion.identity);
+        Instantiate(blood, transform.position, Quaternion.identity, transform);
     }
 
     /// <summary>
