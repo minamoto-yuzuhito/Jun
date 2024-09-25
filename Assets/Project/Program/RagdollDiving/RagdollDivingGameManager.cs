@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RagdollDivingGameManager : MonoBehaviour
 {
@@ -30,16 +31,20 @@ public class RagdollDivingGameManager : MonoBehaviour
     /// <summary>
     /// クリアした数をカウントして、テキストを更新
     /// </summary>
-    public void SetClearRoomText()
+    public void SetScoreNumText()
     {
-        clearRoomNum++;
-        clearRoomText.text = "Score:" + clearRoomNum;
+        ScoreNum++;
+        clearRoomText.text = "Score:" + ScoreNum;
     }
 
     // 突破した数
-    private int clearRoomNum = 0;
-    public int GetClearRoomNum() { return clearRoomNum; }   // ゲッター
-    public void CountClearRoomNum() { clearRoomNum++; }   // 1カウントする
+    private int ScoreNum = 0;
+    public int GetClearRoomNum() { return ScoreNum; }   // ゲッター
+    public void CountClearRoomNum() { ScoreNum++; }   // 1カウントする
+
+    // ゲームオーバー時に、
+    // なんらかのキーかマウスボタンが押されているときtrue
+    bool isGameOverInputAnyKey;
 
     // ゲームオーバー判定
     private bool isGameOver;
@@ -51,6 +56,8 @@ public class RagdollDivingGameManager : MonoBehaviour
         isGameOver = true;
         gameCanvas.DOFade(0.0f, 0.0f);      // 非表示
         gameOverCanvas.DOFade(1.0f, 0.0f);  // 表示
+
+        isGameOverInputAnyKey = true;
     }
 
     private void Start()
@@ -72,6 +79,22 @@ public class RagdollDivingGameManager : MonoBehaviour
     {
         if(isGameOver)
         {
+            // 一度キーを離さないといけない
+            if (!Input.anyKey)
+            {
+                isGameOverInputAnyKey = false;
+            }
+
+            if (!isGameOverInputAnyKey)
+            {
+                if (Input.anyKey)
+                {
+                    Debug.Log("A key or mouse click has been detected");
+
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                }
+            }
+
             return;
         }
 

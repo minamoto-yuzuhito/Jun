@@ -31,10 +31,10 @@ TagManager:
   - Wall
   - Ground
   - ReflectObject
-  - ClearRoomText
   - GameManager
   - RoomSize
   - Enemy
+  - ScoreText
   layers:
   - Default
   - TransparentFX

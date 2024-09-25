@@ -472,6 +472,7 @@ GameObject:
   - component: {fileID: 2367330101536689570}
   - component: {fileID: 268611573057152686}
   - component: {fileID: 2013855447698609366}
+  - component: {fileID: 5304334710000434236}
   m_Layer: 0
   m_Name: Generator
   m_TagString: Untagged
@@ -614,6 +615,24 @@ MonoBehaviour:
   - {fileID: 7473782630461399996, guid: 69fb1eaea867c694699ee6531a19111c, type: 3}
   obstaclesGeneratePos: {fileID: 567881688738753515}
   obstaclesParentObject: {fileID: 7477542455932841421}
+--- !u!114 &5304334710000434236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8736174596281614862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5099cd85cb7b9c4990fd92da9c38048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreAreaPrefab: {fileID: 3725074800658543475, guid: 26a7a5e0d6077354494e81986f0dcfd0, type: 3}
+  scoreAreaGeneratePos:
+  - {fileID: 2713300568567933208}
+  - {fileID: 8943518496781443357}
+  - {fileID: 9047504031740854154}
+  - {fileID: 3420329062845172808}
 --- !u!1 &8770592135936878002
 GameObject:
   m_ObjectHideFlags: 0

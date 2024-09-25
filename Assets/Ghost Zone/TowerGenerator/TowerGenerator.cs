@@ -19,18 +19,15 @@ public class TowerGenerator : MonoBehaviour
     [Tooltip("新しいTowerオブジェクトの生成位置（DangerZoneオブジェクトを指定）")]
     private Transform towerGeneratePos;
 
-    // RagdollDivingGameManager
-    private RagdollDivingGameManager ragdollDivingGameManager;
-
     private bool isTowergenerate = false;
 
     private void Start()
     {
-        // ゲームマネージャーを格納
-        ragdollDivingGameManager = GameObject.FindWithTag("GameManager").GetComponent<RagdollDivingGameManager>();
-
         // 障害物を生成
         GetComponent<ObstaclesGenerator>().GenerateObstacles();
+
+        // スコアを生成
+        GetComponent<ScoreGenerator>().GenerateScore();
     }
 
     void OnTriggerEnter(Collider other)
@@ -61,8 +58,12 @@ public class TowerGenerator : MonoBehaviour
         // 部屋を生成していないとき
         if (!isTowergenerate)
         {
+            // ゲームマネージャーを取得
+            RagdollDivingGameManager ragdollDivingGameManager =
+                        GameObject.FindWithTag("GameManager").GetComponent<RagdollDivingGameManager>();
+
             // 現在の階層をカウント
-            ragdollDivingGameManager.SetClearRoomText();
+            ragdollDivingGameManager.SetScoreNumText();
 
             // 新しい部屋を生成
             Instantiate(towerPrefab, towerGeneratePos.position, Quaternion.identity);
