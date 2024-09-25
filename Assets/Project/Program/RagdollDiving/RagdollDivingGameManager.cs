@@ -13,8 +13,12 @@ public class RagdollDivingGameManager : MonoBehaviour
     public void InitPlayerController() { playerController = null; }
 
     [SerializeField]
-    [Tooltip("現在の階層を表示するText型の変数")]
-    private TextMeshProUGUI clearRoomText;
+    [Tooltip("ゲームプレイ中に表示するスコア")]
+    private TextMeshProUGUI scoreText;
+
+    [SerializeField]
+    [Tooltip("ゲームオーバー画面に表示するスコア")]
+    private TextMeshProUGUI gameOverScoreText;
 
     [SerializeField]
     [Tooltip("ゲーム中のUI")]
@@ -29,12 +33,12 @@ public class RagdollDivingGameManager : MonoBehaviour
     private CanvasGroup gameOverCanvas;
 
     /// <summary>
-    /// クリアした数をカウントして、テキストを更新
+    /// スコアを加算して、テキストを更新
     /// </summary>
-    public void SetScoreNumText()
+    public void SetScoreText(int Value)
     {
-        ScoreNum++;
-        clearRoomText.text = "Score:" + ScoreNum;
+        ScoreNum += Value;
+        scoreText.text = "Score:" + ScoreNum;
     }
 
     // 突破した数
@@ -55,6 +59,9 @@ public class RagdollDivingGameManager : MonoBehaviour
     {
         isGameOver = true;
         gameCanvas.DOFade(0.0f, 0.0f);      // 非表示
+
+        // スコアを代入
+        gameOverScoreText.text = scoreText.text;
         gameOverCanvas.DOFade(1.0f, 0.0f);  // 表示
 
         isGameOverInputAnyKey = true;
@@ -89,8 +96,6 @@ public class RagdollDivingGameManager : MonoBehaviour
             {
                 if (Input.anyKey)
                 {
-                    Debug.Log("A key or mouse click has been detected");
-
                     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 }
             }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9215747341159709471}
   - component: {fileID: 4995879063858899074}
   - component: {fileID: 4710526876136787319}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Obstacle_Hori
   m_TagString: Untagged
   m_Icon: {fileID: 0}

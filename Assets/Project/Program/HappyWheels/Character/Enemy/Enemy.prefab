@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7049684554821226349}
   - component: {fileID: 2472335844131577385}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Collider
   m_TagString: BodyParts
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 836830631343494561}
   m_Layer: 7
   m_Name: RightFoot
-  m_TagString: RightFoot
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
-  objectName: BodyParts
+  objectName: RightFoot
 --- !u!1 &502505394680017231
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,7 +411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3607748760841514772}
   - component: {fileID: 6039190128348402470}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Collider
   m_TagString: BodyParts
   m_Icon: {fileID: 0}
@@ -562,7 +562,7 @@ GameObject:
   - component: {fileID: 4375464140995811886}
   m_Layer: 7
   m_Name: Chest
-  m_TagString: Chest
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -699,7 +699,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
-  objectName: BodyParts
+  objectName: Chest
 --- !u!114 &4375464140995811886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -712,6 +712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e96b447e8aaf5046b550f55261e9082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: {x: 5, y: 60, z: 5}
 --- !u!1 &1241371087321881304
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,7 +776,7 @@ GameObject:
   - component: {fileID: 8660845256500373261}
   m_Layer: 7
   m_Name: RightHand
-  m_TagString: RightHand
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -967,7 +968,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
-  objectName: BodyParts
+  objectName: RightHand
 --- !u!1 &1613771105803972018
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,7 +979,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3438387621614432409}
   - component: {fileID: 3357039884314370080}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Collider
   m_TagString: BodyParts
   m_Icon: {fileID: 0}
@@ -1032,7 +1033,7 @@ GameObject:
   m_Component:
   - component: {fileID: 635516100071193534}
   - component: {fileID: 9190940641714233399}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Collider
   m_TagString: BodyParts
   m_Icon: {fileID: 0}
@@ -1094,7 +1095,7 @@ GameObject:
   - component: {fileID: 3611667230073755861}
   m_Layer: 7
   m_Name: LeftArm
-  m_TagString: LeftArm
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1287,7 +1288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
-  objectName: BodyParts
+  objectName: LeftArm
 --- !u!1 &1881958583802306046
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,7 +1307,7 @@ GameObject:
   - component: {fileID: 7999227156250806045}
   m_Layer: 7
   m_Name: LeftThigh
-  m_TagString: LeftThigh
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1500,7 +1501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
-  objectName: BodyParts
+  objectName: LeftThigh
 --- !u!1 &2369708058923187096
 GameObject:
   m_ObjectHideFlags: 0
@@ -1675,7 +1676,7 @@ GameObject:
   - component: {fileID: 2241137391705503440}
   m_Layer: 7
   m_Name: LeftFoot
-  m_TagString: LeftFoot
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1868,7 +1869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
-  objectName: BodyParts
+  objectName: LeftFoot
 --- !u!1 &2735566119447284650
 GameObject:
   m_ObjectHideFlags: 0
@@ -1879,7 +1880,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1711698697764041320}
   - component: {fileID: 1920904356579612209}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Collider
   m_TagString: BodyParts
   m_Icon: {fileID: 0}
@@ -2121,7 +2122,7 @@ GameObject:
   - component: {fileID: 501640046808348018}
   m_Layer: 7
   m_Name: Waist
-  m_TagString: Waist
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2315,7 +2316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
-  objectName: BodyParts
+  objectName: Waist
 --- !u!1 &3614096423783784148
 GameObject:
   m_ObjectHideFlags: 0
@@ -2326,7 +2327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5306606136538625824}
   - component: {fileID: 8011245663793584307}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Collider
   m_TagString: BodyParts
   m_Icon: {fileID: 0}
@@ -2388,7 +2389,7 @@ GameObject:
   - component: {fileID: 3812185194272725069}
   m_Layer: 7
   m_Name: RightThigh
-  m_TagString: RightThigh
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2582,7 +2583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
-  objectName: BodyParts
+  objectName: RightThigh
 --- !u!1 &3897645903825243760
 GameObject:
   m_ObjectHideFlags: 0
@@ -2601,7 +2602,7 @@ GameObject:
   - component: {fileID: 3505779986146097992}
   m_Layer: 7
   m_Name: RightShin
-  m_TagString: RightShin
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2795,7 +2796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
-  objectName: BodyParts
+  objectName: RightShin
 --- !u!1 &4313020853344269100
 GameObject:
   m_ObjectHideFlags: 0
@@ -2941,7 +2942,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1792955111093863257}
   - component: {fileID: 635657292281853600}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Collider
   m_TagString: BodyParts
   m_Icon: {fileID: 0}
@@ -2995,7 +2996,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3460055940986228711}
   - component: {fileID: 5731629451752930776}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Collider
   m_TagString: BodyParts
   m_Icon: {fileID: 0}
@@ -3184,7 +3185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3747178864619289527}
   - component: {fileID: 6855980636312744977}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Collider
   m_TagString: BodyParts
   m_Icon: {fileID: 0}
@@ -3238,7 +3239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5019499977950594744}
   - component: {fileID: 3643909538265537433}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Collider
   m_TagString: BodyParts
   m_Icon: {fileID: 0}
@@ -3300,7 +3301,7 @@ GameObject:
   - component: {fileID: 5661946431702042258}
   m_Layer: 7
   m_Name: Head
-  m_TagString: Head
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3494,7 +3495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
-  objectName: BodyParts
+  objectName: Head
 --- !u!1 &6131193845087752467
 GameObject:
   m_ObjectHideFlags: 0
@@ -3505,7 +3506,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2113976604100663661}
   - component: {fileID: 43603373221817536}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Collider
   m_TagString: BodyParts
   m_Icon: {fileID: 0}
@@ -3612,7 +3613,7 @@ GameObject:
   - component: {fileID: 2234072206930527631}
   m_Layer: 7
   m_Name: LeftShin
-  m_TagString: LeftShin
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3806,7 +3807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
-  objectName: BodyParts
+  objectName: LeftShin
 --- !u!1 &6769565388480428593
 GameObject:
   m_ObjectHideFlags: 0
@@ -3870,7 +3871,7 @@ GameObject:
   - component: {fileID: 6945807668202773447}
   m_Layer: 7
   m_Name: LeftHand
-  m_TagString: LeftHand
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4062,7 +4063,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
-  objectName: BodyParts
+  objectName: LeftHand
 --- !u!1 &6911816759515105969
 GameObject:
   m_ObjectHideFlags: 0
@@ -4081,7 +4082,7 @@ GameObject:
   - component: {fileID: 6824152484182907911}
   m_Layer: 7
   m_Name: LeftShoulder
-  m_TagString: LeftShoulder
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4275,7 +4276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
-  objectName: BodyParts
+  objectName: LeftShoulder
 --- !u!1 &7094276384172376965
 GameObject:
   m_ObjectHideFlags: 0
@@ -4339,7 +4340,7 @@ GameObject:
   - component: {fileID: 5895069218663178983}
   m_Layer: 7
   m_Name: RightArm
-  m_TagString: RightArm
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4532,7 +4533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
-  objectName: BodyParts
+  objectName: RightArm
 --- !u!1 &7206658473436840522
 GameObject:
   m_ObjectHideFlags: 0
@@ -4588,7 +4589,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4344481565008978062}
   - component: {fileID: 4196298576258332819}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Collider
   m_TagString: BodyParts
   m_Icon: {fileID: 0}
@@ -4687,7 +4688,7 @@ GameObject:
   m_Component:
   - component: {fileID: 692102962898685188}
   - component: {fileID: 7157087971132123758}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Collider
   m_TagString: BodyParts
   m_Icon: {fileID: 0}
@@ -5019,7 +5020,7 @@ GameObject:
   - component: {fileID: 810668441628353397}
   m_Layer: 7
   m_Name: RightShoulder
-  m_TagString: RightShoulder
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5213,7 +5214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
-  objectName: BodyParts
+  objectName: RightShoulder
 --- !u!1 &9032430671185901610
 GameObject:
   m_ObjectHideFlags: 0
@@ -5224,7 +5225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2340774316137601518}
   - component: {fileID: 2074497776061907623}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Collider
   m_TagString: BodyParts
   m_Icon: {fileID: 0}
@@ -5323,7 +5324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 594907563209925191}
   - component: {fileID: 2911492559354803829}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Collider
   m_TagString: BodyParts
   m_Icon: {fileID: 0}

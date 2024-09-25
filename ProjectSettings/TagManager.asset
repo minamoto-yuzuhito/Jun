@@ -34,7 +34,6 @@ TagManager:
   - GameManager
   - RoomSize
   - Enemy
-  - ScoreText
   layers:
   - Default
   - TransparentFX
@@ -54,8 +53,8 @@ TagManager:
   - SoccerBall
   - SoccerPlayerSensor
   - PlayerBody
-  - 
-  - 
+  - Obstacles
+  - EnemyBodyParts
   - 
   - 
   - 

@@ -5,6 +5,10 @@ using static CheckDamage;
 
 public class EnemyController : MonoBehaviour
 {
+    [SerializeField]
+    [Tooltip("移動速度")]
+    private Vector3 speed = new Vector3(5.0f, 70.0f, 5.0f);
+
     private Rigidbody enemyChestRb;
     private Rigidbody playerChestRb;
 
@@ -33,46 +37,92 @@ public class EnemyController : MonoBehaviour
 
             Vector3 enemyChestVelocity = enemyChestRb.velocity;
 
-            // 右
+            //--- 左右と奥行きの移動 ---//
+            // 敵がプレイヤーより右に居る時
             if (enemyChestPos.x > playerChestPos.x)
             {
-                enemyChestVelocity.x = -5;
+                // 左に移動
+                enemyChestVelocity.x = -speed.x;
             }
-            // 左
+            // 敵がプレイヤーより左に居る時
             else
             {
-                enemyChestVelocity.x = 5;
+                // 右に移動
+                enemyChestVelocity.x = speed.x;
             }
-
-            // 同じ位置
-            if (enemyChestPos.y == playerChestPos.y)
-            {
-                if (enemyChestRb.velocity.y < -50.0f)
-                {
-                    enemyChestVelocity.y = -50.0f;
-                }
-            }
-            // 上
-            else if (enemyChestPos.y > playerChestPos.y)
-            {
-                enemyChestVelocity.y += -5; // 下降
-            }
-            // 下
-            else
-            {
-                enemyChestVelocity.y += 10; // 上昇
-            }
-
-            // 奥
+            // 敵がプレイヤーより奥に居る時
             if (enemyChestPos.z > playerChestPos.z)
             {
-                enemyChestVelocity.z = -5;
+                // 手前に移動
+                enemyChestVelocity.z = -speed.z;
             }
-            // 手前
+            // 敵がプレイヤーより手前に居る時
             else
             {
-                enemyChestVelocity.z = 5;
+                // 奥に移動
+                enemyChestVelocity.z = speed.z;
             }
+
+            //--- 上下移動 ---//
+            float enemyChestPosYAbs = Mathf.Abs(enemyChestPos.y);
+            float playerChestPosYAbs = Mathf.Abs(playerChestPos.y);
+
+            float distancePlayer = 0;
+            distancePlayer = Mathf.Abs(enemyChestPosYAbs - playerChestPosYAbs);
+
+            // プレイヤーとの距離を計算
+            // 敵がプレイヤーより上にいる時
+            if (enemyChestPos.y > playerChestPos.y)
+            {
+                enemyChestVelocity.y -= 5;
+
+                // 速度制限
+                if (enemyChestVelocity.y < -60.0f)
+                {
+                    enemyChestVelocity.y = -60.0f;
+                }
+            }
+            // 下にいる時
+            else
+            {
+                // ゆっくり下降
+                enemyChestVelocity.y -= 5.0f;
+
+                // 速度制限
+                if (enemyChestVelocity.y < -30.0f)
+                {
+                    enemyChestVelocity.y = -30.0f;
+                }
+            }
+
+            // プレイヤーの近くにいる時
+            //if (distancePlayer < 10.0f)
+            //{
+            //    // 速度制限
+            //    if (enemyChestVelocity.y > 5.0f)
+            //    {
+            //        enemyChestVelocity.y = 5;
+            //    }
+            //    else if (enemyChestVelocity.y < -5.0f)
+            //    {
+            //        enemyChestVelocity.y = -5;
+            //    }
+            //}
+            //// プレイヤーから一定距離離れているとき
+            //else
+            //{
+            //    // 速度制限
+            //    if (enemyChestVelocity.y > speed.y)
+            //    {
+            //        enemyChestVelocity.y = speed.y;
+            //    }
+            //    else if (enemyChestVelocity.y < -speed.y)
+            //    {
+            //        enemyChestVelocity.y = -speed.y;
+            //    }
+            //}
+
+            
 
             enemyChestRb.velocity = enemyChestVelocity;
         }

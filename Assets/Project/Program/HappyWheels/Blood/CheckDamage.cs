@@ -65,6 +65,32 @@ public class CheckDamage : MonoBehaviour
     /// </summary>
     void OnJointBreak(float breakForce)
     {
+        // プレイヤー
+        if (transform.parent.CompareTag("Player"))
+        {
+            // 指定の部位が破壊された時
+            if (transform.CompareTag("Head") ||
+                transform.CompareTag("Chest") ||
+                transform.CompareTag("Waist"))
+            {
+                // ゲームオーバー
+                GameObject.FindWithTag("GameManager").GetComponent<RagdollDivingGameManager>().IsGameOver();
+            }
+        }
+        // 敵
+        else if (transform.parent.CompareTag("Enemy"))
+        {
+            string objectName = GetComponent<CheckImpact>().GetObjectName();
+
+            // 指定の部位が破壊された時
+            if (objectName == "Head" ||
+                objectName == "Chest" ||
+                objectName == "Waist")
+            {
+                transform.parent.GetComponent<EnemyDestroy>().MyDestroy();
+            }
+        }
+
         // ダメージ音を流す
         transform.parent.GetComponent<AudioSource>().Play();
 

@@ -580,6 +580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 7477542455932841421}
   towerGeneratePos: {fileID: 1494474007939304585}
+  scoreNum: 1
 --- !u!114 &268611573057152686
 MonoBehaviour:
   m_ObjectHideFlags: 0

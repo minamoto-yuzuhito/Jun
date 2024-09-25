@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4230940937465143837}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Obstacle_Hori_EndPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4236102703259256420}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Obstacle_CrossMove_ToTheBottomRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 723102393095429926}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Obstacle_Vert_EndPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,6 +113,10 @@ PrefabInstance:
       propertyPath: crossMoveEndPos
       value: 
       objectReference: {fileID: 4230940937465143837}
+    - target: {fileID: 4710526876136787319, guid: 65d711f76c503264f89054d7e7063875, type: 3}
+      propertyPath: thisIsObstacleMoveDual
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4710526876136787319, guid: 65d711f76c503264f89054d7e7063875, type: 3}
       propertyPath: thisIsObstacleCrossMove
       value: 1
@@ -161,6 +165,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obstacle_Hori
       objectReference: {fileID: 0}
+    - target: {fileID: 7473782630461399996, guid: 65d711f76c503264f89054d7e7063875, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -187,6 +195,10 @@ PrefabInstance:
       propertyPath: crossMoveEndPos
       value: 
       objectReference: {fileID: 723102393095429926}
+    - target: {fileID: -6692164359761297198, guid: 4ccca53e8094c6b47b5e3e156ee9fe74, type: 3}
+      propertyPath: thisIsObstacleMoveDual
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -6692164359761297198, guid: 4ccca53e8094c6b47b5e3e156ee9fe74, type: 3}
       propertyPath: thisIsObstacleCrossMove
       value: 1
@@ -234,6 +246,10 @@ PrefabInstance:
     - target: {fileID: 7473782630461399996, guid: 4ccca53e8094c6b47b5e3e156ee9fe74, type: 3}
       propertyPath: m_Name
       value: Obstacle_Vert
+      objectReference: {fileID: 0}
+    - target: {fileID: 7473782630461399996, guid: 4ccca53e8094c6b47b5e3e156ee9fe74, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

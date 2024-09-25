@@ -142,12 +142,4 @@ public class PlayerController : MonoBehaviour
         // âÒì]ÅAà íuÇ∆Ç‡Ç…å≈íË
         rb.constraints = RigidbodyConstraints.FreezeAll;
     }
-
-    private void OnDestroy()
-    {
-        Debug.Log("Destroyed");
-        rb = null;
-
-        GameObject.FindWithTag("GameManager").GetComponent<RagdollDivingGameManager>().InitPlayerController();
-    }
 }

@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class ScoreSensor : MonoBehaviour
 {
+    [SerializeField]
+    [Tooltip("ScoreAreaに触れた際の得点")]
+    private int scoreNum = 5;
+
+    [SerializeField]
+    [Tooltip("オブジェクトが削除されるまでの時間")]
+    private float lifeTime = 10.0f;
+
+    private void Start()
+    {
+        Destroy(gameObject, lifeTime);
+    }
+
     void OnTriggerEnter(Collider other)
     {
         // 人間オブジェクトが範囲内に入ったとき
@@ -18,8 +31,8 @@ public class ScoreSensor : MonoBehaviour
                     RagdollDivingGameManager ragdollDivingGameManager =
                         GameObject.FindWithTag("GameManager").GetComponent<RagdollDivingGameManager>();
 
-                    // 現在の階層をカウント
-                    ragdollDivingGameManager.SetScoreNumText();
+                    // スコアを加算
+                    ragdollDivingGameManager.SetScoreText(scoreNum);
                 }
             }
         }

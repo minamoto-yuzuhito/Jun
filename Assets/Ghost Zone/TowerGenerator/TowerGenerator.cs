@@ -19,6 +19,10 @@ public class TowerGenerator : MonoBehaviour
     [Tooltip("新しいTowerオブジェクトの生成位置（DangerZoneオブジェクトを指定）")]
     private Transform towerGeneratePos;
 
+    [SerializeField]
+    [Tooltip("次の塔に突入した際の得点")]
+    private int scoreNum = 1;
+
     private bool isTowergenerate = false;
 
     private void Start()
@@ -63,7 +67,7 @@ public class TowerGenerator : MonoBehaviour
                         GameObject.FindWithTag("GameManager").GetComponent<RagdollDivingGameManager>();
 
             // 現在の階層をカウント
-            ragdollDivingGameManager.SetScoreNumText();
+            ragdollDivingGameManager.SetScoreText(scoreNum);
 
             // 新しい部屋を生成
             Instantiate(towerPrefab, towerGeneratePos.position, Quaternion.identity);
