@@ -1602,6 +1602,9 @@ MonoBehaviour:
   soundCanvas: {fileID: 2132652951}
   gameOverCanvas: {fileID: 1993824290}
   playerHPBarCanvas: {fileID: 156788292}
+  levelUpCanvas: {fileID: 1552585814184458189, guid: 9c520a18f626cc44caec790e2850350c, type: 3}
+  levelMaxCanvas: {fileID: 1552585814184458189, guid: 5c726511068d7764b87d9dcdab720660, type: 3}
+  levelUpScore: 0a0000001e00000032000000
   invisibleFloor: {fileID: 7762270162867443353, guid: 3c313d8fddafe394ba092298832fae01, type: 3}
 --- !u!1 &589729421
 GameObject:

@@ -41,19 +41,81 @@ public class RagdollDivingGameManager : MonoBehaviour
     private CanvasGroup playerHPBarCanvas;
 
     [SerializeField]
+    [Tooltip("レベルアップ時に生成するUI")]
+    private GameObject levelUpCanvas;
+    [SerializeField]
+    [Tooltip("レベルアップ時に生成するUI（最大レベル）")]
+    private GameObject levelMaxCanvas;
+
+    private GameObject levelUpCanvasObj;
+
+    [SerializeField]
+    [Tooltip("レベルアップに必要なスコア")]
+    private int[] levelUpScore = new int[] { 10, 30, 50 };
+
+    [SerializeField]
     [Tooltip("制限時間終了時に生成する床")]
     private GameObject invisibleFloor;
 
     /// <summary>
-    /// 回復時の処理
+    /// スコアを加算
     /// </summary>
     public void AddScore(int Value)
     {
-        // スコア加算
-        ScoreNum += Value;
+        // ゲームオーバーではないとき
+        if (!isGameOver)
+        {
+            // スコア加算
+            ScoreNum += Value;
 
-        // テキスト更新
-        scoreText.text = "Score:" + ScoreNum;
+            bool isLevelUp = false;
+
+            if (enemyGenerateLimit == 1)
+            {
+                if (ScoreNum >= levelUpScore[enemyGenerateLimit - 1])
+                {
+                    isLevelUp = true;
+                    enemyGenerateLimit = 2;
+                }
+            }
+            if (enemyGenerateLimit == 2)
+            {
+                if (ScoreNum >= levelUpScore[enemyGenerateLimit - 1])
+                {
+                    isLevelUp = true;
+                    enemyGenerateLimit = 3;
+                }
+            }
+            if (enemyGenerateLimit == 3)
+            {
+                if (ScoreNum >= levelUpScore[enemyGenerateLimit - 1])
+                {
+                    isLevelUp = true;
+                    enemyGenerateLimit = 4;
+                }
+            }
+
+            if (isLevelUp)
+            {
+                // 既に生成されているとき
+                if (levelUpCanvasObj != null) Destroy(levelUpCanvasObj);
+
+                // レベルが最大の時とそれ以外の時で表示するUIを変える
+                GameObject canvasObj = null;
+                if (enemyGenerateLimit == 4) canvasObj = levelMaxCanvas;  // 最大レベル
+                else canvasObj = levelUpCanvas;
+
+                // 生成後に点滅処理を実行
+                levelUpCanvasObj = Instantiate(canvasObj);
+                levelUpCanvasObj.GetComponent<CanvasGroup>().
+                    DOFade(0.0f, 1.0f).
+                    SetLoops(5, LoopType.Yoyo). // 繰り返し
+                    OnComplete(() => Destroy(levelUpCanvasObj));
+            }
+
+            // テキスト更新
+            scoreText.text = "Score:" + ScoreNum;
+        }
     }
 
     /// <summary>
@@ -93,12 +155,26 @@ public class RagdollDivingGameManager : MonoBehaviour
         // スコアUI
         gameOverCanvas.DOFade(1.0f, 0.0f);          // 表示
         gameOverScoreText.text = scoreText.text;    // スコアを代入
+
+        // 既に生成されているとき
+        if (levelUpCanvasObj != null) Destroy(levelUpCanvasObj);
     }
+
+    // 生成できる敵の上限数
+    private int enemyGenerateLimit;
+    public int GetEnemyGenerateLimit() { return enemyGenerateLimit; }   // ゲッター
+    // 存在する敵の数
+    private int nowEnemyNum;
+    public int GetNowEnemyNum() { return nowEnemyNum; } // ゲッター
+    public void SetNowEnemyNum(int Value) { nowEnemyNum += Value; } // セッター
 
     private void Start()
     {
         // 指定時間後に実行
         Invoke("SoundCanvasFade", 2.0f);
+
+        // 生成できる敵の上限数
+        enemyGenerateLimit = 1;
     }
 
     void SoundCanvasFade()
@@ -112,6 +188,9 @@ public class RagdollDivingGameManager : MonoBehaviour
     /// </summary>
     private void Update()
     {
+        Debug.Log("現在の敵：" + nowEnemyNum);
+        Debug.Log("敵の上限：" + enemyGenerateLimit);
+
         // 時間経過でプレイヤーのHPバーを減らす
         // HPバーが0になったときtrueを返す
         if (playerHPBar.DamageInPlayer())

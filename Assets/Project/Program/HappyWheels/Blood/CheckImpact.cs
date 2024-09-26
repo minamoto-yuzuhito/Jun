@@ -14,6 +14,10 @@ public class CheckImpact : MonoBehaviour
     private string objectName = "BodyParts";
     public string GetObjectName() { return objectName; }    //ゲッター
 
+    [SerializeField]
+    [Tooltip("敵を倒した際の得点")]
+    private int scoreNum = 10;
+
     /// <summary>
     /// 衝撃を受けた位置に肉片を生成
     /// </summary>

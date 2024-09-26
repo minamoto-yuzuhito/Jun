@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -20,11 +21,17 @@ public class EnemyGenerator : MonoBehaviour
     /// </summary>
     public void GenerateEnemy()
     {
-        // 敵が存在していないとき
-        if (!GameObject.FindWithTag("Enemy"))
+        // ゲームマネージャーを取得
+        RagdollDivingGameManager gameManager = GameObject.FindWithTag("GameManager").GetComponent<RagdollDivingGameManager>();
+
+        // 敵の数が上限より少ないとき
+        if (gameManager.GetNowEnemyNum() < gameManager.GetEnemyGenerateLimit())
         {
             // 指定の位置に生成
             Instantiate(enemyPrefab, enemyGeneratePos.transform.position, Quaternion.identity);
+
+            // 敵の数のカウントを+1
+            gameManager.SetNowEnemyNum(1);
         }
     }
 }
