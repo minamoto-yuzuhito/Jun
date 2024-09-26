@@ -188,9 +188,6 @@ public class RagdollDivingGameManager : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        Debug.Log("現在の敵：" + nowEnemyNum);
-        Debug.Log("敵の上限：" + enemyGenerateLimit);
-
         // 時間経過でプレイヤーのHPバーを減らす
         // HPバーが0になったときtrueを返す
         if (playerHPBar.DamageInPlayer())

@@ -266,6 +266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: RightFoot
+  scoreNum: 10
 --- !u!1 &502505394680017231
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,6 +701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: Chest
+  scoreNum: 10
 --- !u!114 &4375464140995811886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -969,6 +971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: RightHand
+  scoreNum: 10
 --- !u!1 &1613771105803972018
 GameObject:
   m_ObjectHideFlags: 0
@@ -1289,6 +1292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: LeftArm
+  scoreNum: 10
 --- !u!1 &1881958583802306046
 GameObject:
   m_ObjectHideFlags: 0
@@ -1502,6 +1506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: LeftThigh
+  scoreNum: 10
 --- !u!1 &2369708058923187096
 GameObject:
   m_ObjectHideFlags: 0
@@ -1562,6 +1567,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5314eb1f3bbf5b74ea4ee1f1d5fdba31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 1845955007268882, guid: 67a684e320da6e7439421a07e3fa265c, type: 3}
+  explosionGeneratePos: {fileID: 1219948032756097350}
+  scoreNum: 10
 --- !u!82 &9189334931037400999
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1870,6 +1878,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: LeftFoot
+  scoreNum: 10
 --- !u!1 &2735566119447284650
 GameObject:
   m_ObjectHideFlags: 0
@@ -2317,6 +2326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: Waist
+  scoreNum: 10
 --- !u!1 &3614096423783784148
 GameObject:
   m_ObjectHideFlags: 0
@@ -2584,6 +2594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: RightThigh
+  scoreNum: 10
 --- !u!1 &3897645903825243760
 GameObject:
   m_ObjectHideFlags: 0
@@ -2797,6 +2808,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: RightShin
+  scoreNum: 10
 --- !u!1 &4313020853344269100
 GameObject:
   m_ObjectHideFlags: 0
@@ -3496,6 +3508,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: Head
+  scoreNum: 10
 --- !u!1 &6131193845087752467
 GameObject:
   m_ObjectHideFlags: 0
@@ -3808,6 +3821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: LeftShin
+  scoreNum: 10
 --- !u!1 &6769565388480428593
 GameObject:
   m_ObjectHideFlags: 0
@@ -4064,6 +4078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: LeftHand
+  scoreNum: 10
 --- !u!1 &6911816759515105969
 GameObject:
   m_ObjectHideFlags: 0
@@ -4277,6 +4292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: LeftShoulder
+  scoreNum: 10
 --- !u!1 &7094276384172376965
 GameObject:
   m_ObjectHideFlags: 0
@@ -4534,6 +4550,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: RightArm
+  scoreNum: 10
 --- !u!1 &7206658473436840522
 GameObject:
   m_ObjectHideFlags: 0
@@ -5215,6 +5232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: RightShoulder
+  scoreNum: 10
 --- !u!1 &9032430671185901610
 GameObject:
   m_ObjectHideFlags: 0

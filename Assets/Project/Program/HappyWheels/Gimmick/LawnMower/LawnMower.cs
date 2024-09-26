@@ -100,8 +100,6 @@ public class LawnMower : MonoBehaviour
         // キャラクターの時
         if (other.gameObject.CompareTag("BodyParts"))
         {
-            Debug.Log("すり抜けた！");
-
             // 芝刈り機の奥に連れていくオブジェクトを生成
             GameObject startPoint = Instantiate(
                 pullBehindTheLawnMower, other.transform.position, Quaternion.identity, transform.parent);
@@ -115,25 +113,6 @@ public class LawnMower : MonoBehaviour
             
             // ジョイントを接続
             other.transform.parent.GetComponent<FixedJoint>().connectedBody = startPoint.GetComponent<Rigidbody>();
-        }
-    }
-
-    /// <summary>
-    /// オブジェクトが通り抜けたとき
-    /// </summary>
-    void OnTriggerExit(Collider other)
-    {
-        Debug.Log("通り抜け終えた");
-    }
-
-    /// <summary>
-    /// オブジェクトがすり抜けているとき
-    /// </summary>
-    void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.CompareTag("BodyParts"))
-        {
-            Debug.Log("すり抜けている！");
         }
     }
 }

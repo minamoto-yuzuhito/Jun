@@ -16,12 +16,9 @@ public class Docking : MonoBehaviour
         
         if (objectName == "") return;
 
-        Debug.Log(objectName);
-
         // êlä‘Ç…êGÇÍÇΩÇ∆Ç´
         if (objectName == "BodyParts")
         {
-            Debug.Log("êlä‘Ç…êGÇÍÇΩ");
             FixedJoint fixedJoint = collision.transform.AddComponent<FixedJoint>();
             fixedJoint.connectedBody = GetComponent<Rigidbody>();
         }

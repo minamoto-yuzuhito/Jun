@@ -55,11 +55,6 @@ public class CheckDamage : MonoBehaviour
     [Tooltip("˜A“®‚µ‚ÄoŒŒ‚·‚é•”ˆÊ")]
     private GameObject linkageBleeding;
 
-    private void Start()
-    {
-        //Debug.Log(bodyPartsType);
-    }
-
     /// <summary>
     /// Joint‚ªŠO‚ê‚½‚Æ‚«
     /// </summary>

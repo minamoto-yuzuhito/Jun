@@ -42,8 +42,6 @@ public class DangerZone : MonoBehaviour
     /// <param name="other"></param>
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("触れた");
-
         if (!isCeiling)
         {
             // サイズ変更

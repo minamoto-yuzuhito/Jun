@@ -65,10 +65,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 1; i <= throwingObjectSettings.GetThrowingObjects().Count; i++)
-        {
-            Debug.Log(i + "F" + throwingObjectSettings.GetThrowingObjects()[i - 1]);
-        }
+        //for (int i = 1; i <= throwingObjectSettings.GetThrowingObjects().Count; i++)
+        //{
+        //    Debug.Log(i + "F" + throwingObjectSettings.GetThrowingObjects()[i - 1]);
+        //}
 
         // ‚Ç‚ÌŽ•‚ÉŒü‚©‚Á‚Ä•¨‚ð“Š‚°‚é‚©‚ðŒˆ‚ß‚é
         if (!isPresentProblem)
@@ -224,7 +224,6 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("“Š‚°‚È‚©‚Á‚½");
                     toothController.SetIsThrowFlag(true);
                 }
             }

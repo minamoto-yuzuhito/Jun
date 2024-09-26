@@ -94,15 +94,12 @@ public class SoccerBal : MonoBehaviour
         {
             // 入射ベクトル（速度）
             var inDirection = ballRb.velocity.normalized;
-            Debug.Log("入射ベクトル：" + inDirection);
 
             // 法線ベクトル
             var inNormal = fastRayHitInfo.normal;
-            Debug.Log("法線ベクトル：" + inNormal);
 
             // 反射ベクトル（速度）
             var result = Vector3.Reflect(inDirection, inNormal).normalized;
-            Debug.Log("反射ベクトル：" + result);
 
             // バウンド後の速度をボールに反映
             ballRb.velocity = result * reflectSpeed;

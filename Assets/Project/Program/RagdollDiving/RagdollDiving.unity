@@ -187,6 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: BodyParts
+  scoreNum: 10
 --- !u!114 &27816947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1761,6 +1762,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: BodyParts
+  scoreNum: 10
 --- !u!114 &634724568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2031,6 +2033,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: BodyParts
+  scoreNum: 10
 --- !u!114 &719868632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2243,6 +2246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: BodyParts
+  scoreNum: 10
 --- !u!114 &723744720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2513,6 +2517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: BodyParts
+  scoreNum: 10
 --- !u!114 &734763777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2779,6 +2784,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: BodyParts
+  scoreNum: 10
 --- !u!114 &758215975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3047,6 +3053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: BodyParts
+  scoreNum: 10
 --- !u!114 &855914953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3540,6 +3547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: BodyParts
+  scoreNum: 10
 --- !u!114 &934792734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4070,6 +4078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: BodyParts
+  scoreNum: 10
 --- !u!114 &1031328606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4660,6 +4669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: BodyParts
+  scoreNum: 10
 --- !u!114 &1129475087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5045,6 +5055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: BodyParts
+  scoreNum: 10
 --- !u!114 &1193978785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6270,6 +6281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: BodyParts
+  scoreNum: 10
 --- !u!114 &1552793952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6498,6 +6510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: BodyParts
+  scoreNum: 10
 --- !u!114 &1574308698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7305,6 +7318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: BodyParts
+  scoreNum: 10
 --- !u!114 &1846706467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7938,6 +7952,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceOfMeat: {fileID: 4133346447347102624, guid: b4ae37927f031eb4785eab2362da4c36, type: 3}
   objectName: BodyParts
+  scoreNum: 10
 --- !u!135 &2001809737
 SphereCollider:
   m_ObjectHideFlags: 0
