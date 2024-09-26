@@ -23,7 +23,11 @@ public class PlayerController : MonoBehaviour
     [Tooltip("LeftHand")]
     private Rigidbody leftHand;
 
+    // 移動するオブジェクトのRigidbody
     Rigidbody rb;
+
+    // 落下速度を返す
+    public float GetVelocityY() { return rb.velocity.y; }
 
     private float hori;
     private float vert;
@@ -56,14 +60,13 @@ public class PlayerController : MonoBehaviour
         newVelocity.x = hori * 10 * directionHori;
         newVelocity.z = vert * 10 * directionVert;
 
+        // 速度制限
         if(rb.velocity.y < -50.0f)
         {
             newVelocity.y = -50.0f;
         }
 
         rb.velocity = newVelocity;
-
-        //Debug.Log(rb.velocity);
     }
 
     // 掴む

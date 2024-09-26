@@ -55,7 +55,7 @@ TagManager:
   - PlayerBody
   - Obstacles
   - EnemyBodyParts
-  - 
+  - InvisibleFloor
   - 
   - 
   - 

@@ -11,10 +11,6 @@ public class BloodMove : MonoBehaviour
     private Vector3 bloodMoveShaking = new Vector3(2.0f, 2.0f, 2.0f);
 
     [SerializeField]
-    [Tooltip("‘¬“x")]
-    private float speed;
-
-    [SerializeField]
     [Tooltip("Destroy‚·‚éŽžŠÔ‚ðŽw’è‚·‚é")]
     private float time = 2;
 

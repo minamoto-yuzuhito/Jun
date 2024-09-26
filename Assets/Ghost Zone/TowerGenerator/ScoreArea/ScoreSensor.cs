@@ -31,8 +31,8 @@ public class ScoreSensor : MonoBehaviour
                     RagdollDivingGameManager ragdollDivingGameManager =
                         GameObject.FindWithTag("GameManager").GetComponent<RagdollDivingGameManager>();
 
-                    // スコアを加算
-                    ragdollDivingGameManager.SetScoreText(scoreNum);
+                    // プレイヤーの体力を回復
+                    ragdollDivingGameManager.PlayerHPBarHealing();
                 }
             }
         }

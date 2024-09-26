@@ -8,6 +8,10 @@ using UnityEngine.SceneManagement;
 public class RagdollDivingGameManager : MonoBehaviour
 {
     [SerializeField]
+    [Tooltip("PlayerHPBarクラス")]
+    private PlayerHPBar playerHPBar;
+
+    [SerializeField]
     [Tooltip("PlayerControllerクラス")]
     private PlayerController playerController;
     public void InitPlayerController() { playerController = null; }
@@ -32,13 +36,33 @@ public class RagdollDivingGameManager : MonoBehaviour
     [Tooltip("ゲームオーバー時のUI")]
     private CanvasGroup gameOverCanvas;
 
+    [SerializeField]
+    [Tooltip("プレイヤーの体力のUI")]
+    private CanvasGroup playerHPBarCanvas;
+
+    [SerializeField]
+    [Tooltip("制限時間終了時に生成する床")]
+    private GameObject invisibleFloor;
+
     /// <summary>
-    /// スコアを加算して、テキストを更新
+    /// 回復時の処理
     /// </summary>
-    public void SetScoreText(int Value)
+    public void AddScore(int Value)
     {
+        // スコア加算
         ScoreNum += Value;
+
+        // テキスト更新
         scoreText.text = "Score:" + ScoreNum;
+    }
+
+    /// <summary>
+    /// 回復時の処理
+    /// </summary>
+    public void PlayerHPBarHealing()
+    {
+        // 体力回復
+        playerHPBar.IsHealing(10.0f);
     }
 
     // 突破した数
@@ -48,7 +72,7 @@ public class RagdollDivingGameManager : MonoBehaviour
 
     // ゲームオーバー時に、
     // なんらかのキーかマウスボタンが押されているときtrue
-    bool isGameOverInputAnyKey;
+    bool isGameOverInputAnyKey = true;
 
     // ゲームオーバー判定
     private bool isGameOver;
@@ -57,14 +81,18 @@ public class RagdollDivingGameManager : MonoBehaviour
     /// </summary>
     public void IsGameOver()
     {
+        // ゲームオーバー判定
         isGameOver = true;
-        gameCanvas.DOFade(0.0f, 0.0f);      // 非表示
 
-        // スコアを代入
-        gameOverScoreText.text = scoreText.text;
-        gameOverCanvas.DOFade(1.0f, 0.0f);  // 表示
+        // ゲームUI
+        gameCanvas.DOFade(0.0f, 0.0f);  // 非表示
 
-        isGameOverInputAnyKey = true;
+        // プレイヤーの体力のUI
+        playerHPBarCanvas.DOFade(0.0f, 0.0f);   // 非表示
+
+        // スコアUI
+        gameOverCanvas.DOFade(1.0f, 0.0f);          // 表示
+        gameOverScoreText.text = scoreText.text;    // スコアを代入
     }
 
     private void Start()
@@ -84,18 +112,51 @@ public class RagdollDivingGameManager : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if(isGameOver)
+        // 時間経過でプレイヤーのHPバーを減らす
+        // HPバーが0になったときtrueを返す
+        if (playerHPBar.DamageInPlayer())
         {
-            // 一度キーを離さないといけない
+            // 操作するプレイヤーオブジェクトが指定されているとき
+            if (playerController != null)
+            {
+                // 高速で落下しているとき
+                if (playerController.GetVelocityY() < -50.0f)
+                {
+                    // 生成座標
+                    Vector3 newPos = playerController.transform.position;
+                    newPos.y -= 5.0f;
+
+                    // プレイヤーのすぐ下に床を生成する
+                    Instantiate(invisibleFloor, newPos, Quaternion.identity);
+
+                    // ゲームオーバー処理
+                    IsGameOver();
+                }
+            }
+            else
+            {
+                // ゲームオーバー処理
+                IsGameOver();
+            }
+        }
+
+        // ゲームオーバー時
+        if (isGameOver)
+        {
+            // キーに触れていないとき
             if (!Input.anyKey)
             {
                 isGameOverInputAnyKey = false;
             }
 
+            // ゲームオーバー時に何かしらのキーに触れていた場合、
+            // 一度離さないとキー入力を受け付けられない
             if (!isGameOverInputAnyKey)
             {
+                // 何かしらのキーに触れたとき
                 if (Input.anyKey)
                 {
+                    // リトライ
                     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 }
             }
@@ -103,9 +164,10 @@ public class RagdollDivingGameManager : MonoBehaviour
             return;
         }
 
+        // 操作するプレイヤーオブジェクトが指定されているとき
         if (playerController != null)
         {
-            // キー入力を受け付ける
+            // プレイヤー操作のキー入力を受け付ける
             playerController.IsMoveInput();
         }
     }
@@ -116,11 +178,13 @@ public class RagdollDivingGameManager : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
+        // ゲームオーバー時
         if (isGameOver)
         {
             return;
         }
 
+        // 操作するプレイヤーオブジェクトが指定されているとき
         if (playerController != null)
         {
             // プレイヤーの操作

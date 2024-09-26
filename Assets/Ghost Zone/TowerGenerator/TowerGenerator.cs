@@ -67,7 +67,7 @@ public class TowerGenerator : MonoBehaviour
                         GameObject.FindWithTag("GameManager").GetComponent<RagdollDivingGameManager>();
 
             // 現在の階層をカウント
-            ragdollDivingGameManager.SetScoreText(scoreNum);
+            ragdollDivingGameManager.AddScore(scoreNum);
 
             // 新しい部屋を生成
             Instantiate(towerPrefab, towerGeneratePos.position, Quaternion.identity);
